@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+		"target": "es5",
+		"lib": [
+			"dom",
+			"dom.iterable"
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"baseUrl": "./",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"rootDir": ".",
+		"sourceMap": true,
+		"skipDefaultLibCheck": true,
+		"strictNullChecks": true,
+		"types": ["node", "jest"],
+	},
+	"include": [
+		"src/tests",
+		"src", "tests/_tests.test.tsxt.tsx",
+	],
+	"exclude": [
+		"node_modules",
+		"**/node_modules/**/*.d.ts",
+		"**/node_modules/**/*.ts"
+	]
+}
