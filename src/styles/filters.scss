@@ -1,0 +1,120 @@
+$primary-color: #333;
+$background-color: #f9f9f9;
+$dropdown-border: 1px solid #ddd;
+$hover-color: #007bff;
+
+.filters {
+  display: flex;
+  flex-direction: column;
+
+  &__sidebar {
+    display: none;
+    flex-direction: column;
+    background: $background-color;
+    padding: 20px;
+    border-right: $dropdown-border;
+    min-width: 200px;
+    h2 {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      color: $primary-color;
+
+      .filters__icon {
+        margin-right: 10px;
+      }
+    }
+    .filters__group {
+      margin-top: 20px;
+      h3 {
+        font-size: 16px;
+        color: $primary-color;
+        margin-bottom: 10px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        li {
+          button {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            color: $primary-color;
+            cursor: pointer;
+
+            &:hover {
+              background: $hover-color;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .filters__dropdown-button {
+      background: $background-color;
+      border: $dropdown-border;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 14px;
+      color: $primary-color;
+      text-align: left;
+      cursor: pointer;
+
+      &:hover {
+        background: $hover-color;
+        color: #fff;
+      }
+    }
+
+    .filters__dropdown {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: $dropdown-border;
+      border-radius: 5px;
+      background: $background-color;
+
+      li {
+        button {
+          width: 100%;
+          text-align: left;
+          background: none;
+          border: none;
+          padding: 10px;
+          font-size: 14px;
+          color: $primary-color;
+          cursor: pointer;
+
+          &:hover {
+            background: $hover-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+
+    &__sidebar {
+      display: flex;
+    }
+
+    &__mobile {
+      display: none;
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import '../styles/header.scss';
 import logo from "../assets/logo.png";
-import Search from './Search';
+import Search from './SearchInput';
 
-function Header() {
+const Header = (): JSX.Element => {
   return (
       <header className="header-container">
         <div className="logo">
