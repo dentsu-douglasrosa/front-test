@@ -28,7 +28,7 @@ export interface SidebarFilterProps {
   onFilterChange: FilterChangeCallback
 }
 
-export interface UseFiltersProps extends UseProps {
+export interface UseFiltersReturn extends UseProps {
     state: UseProps["state"] & {
         categoriesLabel: string
         authorsLabel: string

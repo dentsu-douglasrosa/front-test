@@ -1,3 +1,5 @@
+import { UseProps } from "./global.type"
+
 export interface Post {
     id: string
     title: string
@@ -24,4 +26,19 @@ export interface Author {
     profilePicture: string
     createdAt: string
     updatedAt: string
+}
+
+export interface PostsProps {
+    orderBy?: "updatedAt"
+    limit?: number
+}
+
+export type UsePostsProps = PostsProps | undefined
+
+export interface UsePostsReturn extends UseProps {
+    state: UseProps["state"] & {
+        posts: Post[]
+        loading: boolean
+    }
+    controller: UseProps["controller"] & {}
 }

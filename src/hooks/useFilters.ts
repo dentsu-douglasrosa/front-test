@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ENDPOINTS } from "src/constants/filters";
-import { AuthorFilter, CategoryFilter, UseFiltersProps } from "src/types/filters.type";
+import { AuthorFilter, CategoryFilter, UseFiltersReturn } from "src/types/filters.type";
 
-export const useFilters = (): UseFiltersProps => {
+export const useFilters = (): UseFiltersReturn => {
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
