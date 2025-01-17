@@ -6,26 +6,26 @@ export type Filter = AuthorFilter | CategoryFilter
 export interface AuthorFilter extends Author {}
 export interface CategoryFilter extends Category {}
 
-export type FilterChangeCallback = (type: "category" | "author", value: string) => void;
+export type FilterTypes = "category" | "author"
+
+export type FilterChangeCallback = (type: FilterTypes, value: string) => void;
 
 export interface FiltersProps {
-  onFilterChange: FilterChangeCallback;
+
 }
 
 export interface DropdownFilterProps {
-    type: "author" | "category"
+    type: FilterTypes
     title: string
     items: Filter[]
     visible: boolean
     setShouldShow: React.Dispatch<React.SetStateAction<boolean>>
-    onFilterChange: FilterChangeCallback
   }
 
 export interface SidebarFilterProps {
-  type: "author" | "category"
+  type: FilterTypes
   title: string
   items: Filter[]
-  onFilterChange: FilterChangeCallback
 }
 
 export interface UseFiltersReturn extends UseProps {

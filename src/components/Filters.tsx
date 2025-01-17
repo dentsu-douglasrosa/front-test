@@ -1,57 +1,11 @@
 import React from "react";
 import '../styles/filters.scss';
 import { useFilters } from "src/hooks/useFilters";
-import { DropdownFilterProps, FiltersProps, type SidebarFilterProps } from "src/types/filters.type";
+import { FiltersProps } from "src/types/filters.type";
+import SidebarFilter from "./SideBarFilter";
+import DropdownFilter from "./DropdownFilter";
 
-const SidebarFilter = ({ type, title, items, onFilterChange }: SidebarFilterProps): JSX.Element => {
-  return (
-    <div className="filters__group">
-      <h3>{title}</h3>
-      <ul>
-        {items?.map(item => {
-          return (
-            <li key={`${type}__${item.id}`}>
-              <button onClick={() => onFilterChange(type, item.id)}>{item.name}</button>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
-  )
-}
-
-const DropdownFilter = ({
-  type,
-  title,
-  items,
-  onFilterChange,
-  setShouldShow,
-  visible
-} : DropdownFilterProps): JSX.Element => {
-  return (
-    <div>
-      <button
-        className="filters__dropdown-button"
-        onClick={() => setShouldShow(state => !state)}
-      >
-        {title}
-      </button>
-      {visible && (
-        <ul className="filters__dropdown">
-          {items?.map(item => {
-            return (
-                <li key={`${type}__${item.id}`}>
-                  <button onClick={() => onFilterChange(type, item.id)}>{item.name}</button>
-                </li>
-              )
-            })}
-        </ul>
-      )}
-    </div>
-  )
-}
-
-const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
+const Filters = (): JSX.Element => {
   const { state, controller } = useFilters();
 
   return (
@@ -65,26 +19,23 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
           type={"category"}
           title={state.categoriesLabel}
           items={state.categories}
-          onFilterChange={onFilterChange} 
         />
 
         <SidebarFilter
           type={"author"}
           title={state.authorsLabel}
           items={state.authors}
-          onFilterChange={onFilterChange} 
         />
 
       </aside>
 
       <div className="filters__mobile">
-       <DropdownFilter 
+       <DropdownFilter
           setShouldShow={controller.setShouldShowAuthors}
           visible={state.shouldShowAuthors}
           type={"author"}
           title={state.authorsLabel}
           items={state.authors}
-          onFilterChange={onFilterChange} 
        />
 
         <DropdownFilter 
@@ -93,7 +44,6 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
           type={"category"}
           title={state.categoriesLabel}
           items={state.categories}
-          onFilterChange={onFilterChange} 
        />
         
       </div>

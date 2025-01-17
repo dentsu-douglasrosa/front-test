@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ENDPOINTS } from "src/constants/posts";
+import { setPosts } from "src/redux/slices/posts.slice";
 import { Post, UsePostsProps, UsePostsReturn } from "src/types/posts.type";
+import { RootState } from "src/types/redux.type";
 
 export const usePosts = (props: UsePostsProps): UsePostsReturn => {
-    const [posts, setPosts] = useState<Post[]>([]);
+    const dispatch = useDispatch();
+
+    const { posts } = useSelector((state: RootState) => state.posts);
+    const {
+        categoryIds,
+        authorIds,
+        searchQuery
+    } = useSelector((state: RootState) => state.filter);
+
     const [loading, setLoading] = useState<boolean>(true);
 
     const sortPosts = (postsParam: Post[]): Post[] => postsParam.sort((a, b) => {
@@ -11,7 +22,7 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
         const dateB = new Date(b.updatedAt).getTime();
         return dateB - dateA;
     });
-    
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -29,7 +40,7 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
                     if(props?.orderBy === "updatedAt") data = sortPosts(data)
                     if(props?.limit) data = data.slice(0, props?.limit)
 
-                    setPosts(data)
+                    dispatch(setPosts(data))
                 }
             } finally {
                 setLoading(false);
@@ -37,7 +48,7 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
         };
 
         fetchPosts();
-    }, []);
+    }, [categoryIds, authorIds, searchQuery, dispatch]);
     
     return {
         state: {
