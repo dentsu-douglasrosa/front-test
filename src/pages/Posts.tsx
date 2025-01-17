@@ -10,7 +10,7 @@ const Posts = (props: PostsProps): JSX.Element => {
   return (
     <div className="posts-container">
         {state.posts.map(post => {
-          return <PostCard post={post} />
+          return <PostCard key={post.id} post={post} />
         })}
     </div>
   );

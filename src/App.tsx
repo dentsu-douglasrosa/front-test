@@ -11,8 +11,6 @@ const App: React.FC = () => {
     console.log(`Filtering by ${type}: ${value}`);
   };
 
-  
-
   return (
     <div>
         <Header />

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { ENDPOINTS } from "src/constants/filters";
 import { AuthorFilter, CategoryFilter, UseFiltersReturn } from "src/types/filters.type";
+import { useTranslation } from 'react-i18next';
 
 export const useFilters = (): UseFiltersReturn => {
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const { t } = useTranslation();
 
     const [shouldShowCategories, setShouldShowCategories] = useState(false);
     const [shouldShowAuthors, setShouldShowAuthors] = useState(false);
@@ -54,8 +56,8 @@ export const useFilters = (): UseFiltersReturn => {
 
     return {
         state: {
-            categoriesLabel: "Categories",
-            authorsLabel: "Authors",
+            categoriesLabel: t('categories'),
+            authorsLabel: t('authors'),
             authors,
             categories,
             loading,

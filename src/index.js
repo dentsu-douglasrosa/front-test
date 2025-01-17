@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { sendToVercelAnalytics } from './vitals';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './i18n';
 
 reportWebVitals(sendToVercelAnalytics);
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
