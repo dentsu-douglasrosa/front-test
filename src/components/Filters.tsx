@@ -1,19 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import '../styles/filters.scss';
+import { useFilters } from "src/hooks/useFilters";
+import { DropdownFilterProps, FiltersProps, type SidebarFilterProps } from "src/types/filters.type";
 
-type FilterChangeCallback = (type: "category" | "author", value: string) => void;
+const SidebarFilter = ({ type, title, items, onFilterChange }: SidebarFilterProps): JSX.Element => {
+  return (
+    <div className="filters__group">
+      <h3>{title}</h3>
+      <ul>
+        {items?.map(item => {
+          return (
+            <li key={`${type}__${item.id}`}>
+              <button onClick={() => onFilterChange(type, item.id)}>{item.name}</button>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
 
-interface FiltersProps {
-  onFilterChange: FilterChangeCallback;
+const DropdownFilter = ({
+  type,
+  title,
+  items,
+  onFilterChange,
+  setShouldShow,
+  visible
+} : DropdownFilterProps): JSX.Element => {
+  return (
+    <div>
+      <button
+        className="filters__dropdown-button"
+        onClick={() => setShouldShow(state => !state)}
+      >
+        {title}
+      </button>
+      {visible && (
+        <ul className="filters__dropdown">
+          {items?.map(item => {
+            return (
+                <li key={`${type}__${item.id}`}>
+                  <button onClick={() => onFilterChange(type, item.id)}>{item.name}</button>
+                </li>
+              )
+            })}
+        </ul>
+      )}
+    </div>
+  )
 }
 
 const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
-
-  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
-  const [showAuthorDropdown, setShowAuthorDropdown] = useState(false);
-
-  const categories: string[] = ["Tech", "Lifestyle", "Education", "Business"];
-  const authors: string[] = ["Alice", "Bob", "Charlie", "Diana"];
+  const { state, controller } = useFilters();
 
   return (
     <div className="filters">
@@ -21,59 +60,42 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
         <h2>
           <span className="filters__icon"></span> Filters
         </h2>
-        <div className="filters__group">
-          <h3>Category</h3>
-          <ul>
-            {categories.map((category) => (
-              <li key={category}>
-                <button onClick={() => onFilterChange("category", category)}>{category}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="filters__group">
-          <h3>Author</h3>
-          <ul>
-            {authors.map((author) => (
-              <li key={author}>
-                <button onClick={() => onFilterChange("author", author)}>{author}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        
+        <SidebarFilter
+          type={"category"}
+          title={state.categoriesLabel}
+          items={state.categories}
+          onFilterChange={onFilterChange} 
+        />
+
+        <SidebarFilter
+          type={"author"}
+          title={state.authorsLabel}
+          items={state.authors}
+          onFilterChange={onFilterChange} 
+        />
+
       </aside>
 
       <div className="filters__mobile">
-        <button
-          className="filters__dropdown-button"
-          onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
-        >
-          Category
-        </button>
-        {showCategoryDropdown && (
-          <ul className="filters__dropdown">
-            {categories.map((category) => (
-              <li key={category}>
-                <button onClick={() => onFilterChange("category", category)}>{category}</button>
-              </li>
-            ))}
-          </ul>
-        )}
-        <button
-          className="filters__dropdown-button"
-          onClick={() => setShowAuthorDropdown(!showAuthorDropdown)}
-        >
-          Author
-        </button>
-        {showAuthorDropdown && (
-          <ul className="filters__dropdown">
-            {authors.map((author) => (
-              <li key={author}>
-                <button onClick={() => onFilterChange("author", author)}>{author}</button>
-              </li>
-            ))}
-          </ul>
-        )}
+       <DropdownFilter 
+          setShouldShow={controller.setShouldShowAuthors}
+          visible={state.shouldShowAuthors}
+          type={"author"}
+          title={state.authorsLabel}
+          items={state.authors}
+          onFilterChange={onFilterChange} 
+       />
+
+        <DropdownFilter 
+          setShouldShow={controller.setShouldShowCategories}
+          visible={state.shouldShowCategories}
+          type={"category"}
+          title={state.categoriesLabel}
+          items={state.categories}
+          onFilterChange={onFilterChange} 
+       />
+        
       </div>
     </div>
   );

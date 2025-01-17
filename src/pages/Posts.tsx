@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../styles/posts.scss';
 import { usePosts } from '../hooks/usePosts'
 import PostCard from 'src/components/PostCard';

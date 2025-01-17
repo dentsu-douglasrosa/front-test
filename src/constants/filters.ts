@@ -1,0 +1,9 @@
+import { ENDPOINTS as AUTHORS_ENDPOINTS } from "./authors"
+import { ENDPOINTS as CATEGORIES_ENDPOINTS } from "./categories"
+
+export const ENDPOINTS = {
+    GET: {
+        AUTHORS: AUTHORS_ENDPOINTS.GET.AUTHORS,
+        CATEGORIES: CATEGORIES_ENDPOINTS.GET.CATEGORIES,
+    }
+}
