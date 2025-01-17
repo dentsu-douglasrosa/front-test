@@ -1,4 +1,6 @@
 $primary-font: 'Open Sans';
+$secondary-light: #ef4c84;
+$secondary-light-light: #f0b6ca;
 
 * {
   margin: 0;
@@ -15,6 +17,7 @@ html, body {
 body {
   font-family: $primary-font;
   color: grey;
+  background: radial-gradient(circle at 90% 40%, $secondary-light-light, #ffffff, #ffffff, #ffffff)
 }
 
 .app-container {
