@@ -14,7 +14,6 @@ const App: React.FC = () => {
       <Router>
         <Header />
         <main className='app-container'>
-          <Filters />
           <div style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<Posts />} />
