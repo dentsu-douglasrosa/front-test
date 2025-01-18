@@ -13,5 +13,6 @@ export interface UseFilterReturn extends UseProps {
     }
     controller: UseProps["controller"] & {
         onFilterChange: (id: string) => void
+        isFilterIdApplied: (id: string) => boolean
     }
 }

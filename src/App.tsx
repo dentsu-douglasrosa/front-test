@@ -11,19 +11,19 @@ import { Provider } from 'react-redux';
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <Header />
-      <main className='app-container'>
+      <Router>
+        <Header />
+        <main className='app-container'>
           <Filters />
           <div style={{ flex: 1 }}>
-          <Router>
             <Routes>
               <Route path="/" element={<Posts />} />
               <Route path="/posts" element={<Posts />} />
               <Route path="/posts/:id" element={<PostDetails />} />
             </Routes>
-          </Router>
           </div>
-      </main>
+        </main>
+      </Router>
     </Provider>
   );
 };

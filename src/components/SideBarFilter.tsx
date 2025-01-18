@@ -13,7 +13,7 @@ const SidebarFilter = ({ type, title, items }: SidebarFilterProps): JSX.Element 
         {items?.map(item => {
           return (
             <li key={`${type}__${item.id}`}>
-              <button onClick={() => controller.onFilterChange(item.id)}>{item.name}</button>
+              <button className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} onClick={() => controller.onFilterChange(item.id)}>{item.name}</button>
             </li>
           )
         })}
