@@ -5,6 +5,10 @@
 			"dom",
 			"dom.iterable"
 		],
+		"baseUrl": "./",
+		"paths": {
+			"src/*": ["src/*"]
+		},
 		"allowJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
@@ -18,7 +22,6 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "react-jsx",
-		"baseUrl": "./",
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"rootDir": ".",
