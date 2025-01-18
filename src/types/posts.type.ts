@@ -1,4 +1,4 @@
-import { UseProps } from "./global.type"
+import { UseProps } from "./_shared.type"
 
 export interface Post {
     id: string

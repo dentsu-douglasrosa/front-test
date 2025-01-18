@@ -1,7 +1,6 @@
 import React from "react";
 import '../styles/filters.scss';
 import { useFilters } from "src/hooks/useFilters";
-import { FiltersProps } from "src/types/filters.type";
 import SidebarFilter from "./SideBarFilter";
 import DropdownFilter from "./DropdownFilter";
 
@@ -11,9 +10,9 @@ const Filters = (): JSX.Element => {
   return (
     <div className="filters">
       <aside className="filters__sidebar">
-        <h2>
-          <span className="filters__icon"></span> Filters
-        </h2>
+        <div className="filters-title">
+          <h2>{state.filtersLabel}</h2>
+        </div>
         
         <SidebarFilter
           type={"category"}

@@ -58,6 +58,7 @@ export const useFilters = (): UseFiltersReturn => {
         state: {
             categoriesLabel: t('categories'),
             authorsLabel: t('authors'),
+            filtersLabel: t('filtersLabel'),
             authors,
             categories,
             loading,

@@ -1,6 +1,6 @@
 import { Author } from "./authors.type";
 import { Category } from "./categories.type";
-import { UseProps } from "./global.type";
+import { UseProps } from "./_shared.type";
 
 export type Filter = AuthorFilter | CategoryFilter
 export interface AuthorFilter extends Author {}
@@ -32,6 +32,7 @@ export interface UseFiltersReturn extends UseProps {
     state: UseProps["state"] & {
         categoriesLabel: string
         authorsLabel: string
+        filtersLabel: string
         authors: AuthorFilter[]
         categories: CategoryFilter[]
         loading: boolean

@@ -1,4 +1,4 @@
-import { UseProps } from "./global.type"
+import { UseProps } from "./_shared.type"
 import { Post } from "./posts.type"
 
 export interface PostDetails extends Post {}
