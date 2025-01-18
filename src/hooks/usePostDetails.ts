@@ -1,5 +1,6 @@
+import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ENDPOINTS } from "src/constants/posts";
 import { PostDetails, UsePostDetailsProps, UsePostDetailsReturn } from "src/types/post-details.type";
 
@@ -9,6 +10,8 @@ export const usePostDetails = (_?: UsePostDetailsProps): UsePostDetailsReturn =>
     const [post, setPost] = useState<PostDetails>();
     const [latestPosts, setLatestPosts] = useState<PostDetails[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+
+    const navigate = useNavigate()
     
     const fetchLatestPosts = async () => {
         try {
@@ -60,6 +63,10 @@ export const usePostDetails = (_?: UsePostDetailsProps): UsePostDetailsReturn =>
         }
     };
 
+    const onClickBack = () => {
+        navigate(`/posts`)
+    }
+
     useEffect(() => {
         if(!id) return
         
@@ -76,7 +83,11 @@ export const usePostDetails = (_?: UsePostDetailsProps): UsePostDetailsReturn =>
             latestPosts,
             loading,
             post,
+            labelLatestArticles: t('latestArticles'),
+            labelBack: t('back')
         },
-        controller: {}
+        controller: {
+            onClickBack,
+        }
     }
 }

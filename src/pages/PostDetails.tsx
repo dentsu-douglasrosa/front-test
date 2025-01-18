@@ -11,6 +11,7 @@ const PostDetails = (): JSX.Element => {
 
   return (
     <div className="posts-details-container">
+      <span onClick={() => controller.onClickBack()} className='post-details-back'>{state.labelBack}</span>
       <div className="post-header">
           <h1 className="post-title">{state.post.title}</h1>
       </div>
@@ -33,12 +34,10 @@ const PostDetails = (): JSX.Element => {
               {state.post.content}
           </p>
       </div>
-      <div className="post-categories">
-      {state.post.categories.map(cat => {
-        return <span key={`post-category-${cat.id}`} className="category">{cat.name}</span>
-      })}
-      </div>
       <div>
+        <span className='latest-articles-title'>
+          {state.labelLatestArticles}
+        </span>
         <Posts orderBy={"updatedAt"} limit={3} />
       </div>
     </div>

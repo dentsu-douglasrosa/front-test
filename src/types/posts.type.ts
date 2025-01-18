@@ -39,6 +39,7 @@ export interface UsePostsReturn extends UseProps {
     state: UseProps["state"] & {
         posts: Post[]
         loading: boolean
+        isOnPostDetails: boolean
     }
     controller: UseProps["controller"] & {}
 }

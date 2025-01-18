@@ -1,3 +1,5 @@
+@use './colors';
+
 $font-family: 'Open Sans';
 $line-height-ratio: 1;
 
@@ -7,7 +9,7 @@ $line-height-ratio: 1;
     line-height: 130%;
     font-style: bold;
     font-weight: 700;
-    color: red;
+    color: colors.$neutrals-darkest;
 }
 
 @mixin font-h2 {
@@ -16,6 +18,7 @@ $line-height-ratio: 1;
     line-height: 130%;
     font-style: bold;
     font-weight: 700;
+    color: colors.$neutrals-darkest;
 }
 
 @mixin font-h3 {
@@ -24,6 +27,7 @@ $line-height-ratio: 1;
     line-height: 130%;
     font-style: bold;
     font-weight: 700;
+    color: colors.$neutrals-darkest;
 }
 
 @mixin font-body-large {
@@ -32,6 +36,7 @@ $line-height-ratio: 1;
     line-height: 150%;
     font-style: normal;
     font-weight: 400;
+    color: colors.$neutrals-darkest;
 }
 
 @mixin font-body-small {
@@ -40,6 +45,7 @@ $line-height-ratio: 1;
     line-height: 150%;
     font-style: normal;
     font-weight: 400;
+    color: colors.$neutrals-extra-dark;
 }
 
 @mixin font-caption {
@@ -48,4 +54,5 @@ $line-height-ratio: 1;
     line-height: 130%;
     font-style: normal;
     font-weight: 400;
+    color: colors.$neutrals-extra-dark;
 }

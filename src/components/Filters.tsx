@@ -29,22 +29,21 @@ const Filters = (): JSX.Element => {
       </aside>
 
       <div className="filters__mobile">
-       <DropdownFilter
-          setShouldShow={controller.setShouldShowAuthors}
-          visible={state.shouldShowAuthors}
-          type={"author"}
-          title={state.authorsLabel}
-          items={state.authors}
-       />
+        <DropdownFilter
+            setShouldShow={controller.setShouldShowAuthors}
+            visible={state.shouldShowAuthors}
+            type={"author"}
+            title={state.authorsLabel}
+            items={state.authors}
+        />
 
-        <DropdownFilter 
-          setShouldShow={controller.setShouldShowCategories}
-          visible={state.shouldShowCategories}
-          type={"category"}
-          title={state.categoriesLabel}
-          items={state.categories}
-       />
-        
+          <DropdownFilter 
+            setShouldShow={controller.setShouldShowCategories}
+            visible={state.shouldShowCategories}
+            type={"category"}
+            title={state.categoriesLabel}
+            items={state.categories}
+        />
       </div>
     </div>
   );

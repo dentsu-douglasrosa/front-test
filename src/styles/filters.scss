@@ -1,20 +1,21 @@
 @use './fonts';
+@use './colors';
 
 $primary-color: #333;
 $background-color: #f9f9f9;
-$dropdown-border: 1px solid #ddd;
-$hover-color: #007bff;
-
+$hover-color: colors.$neutrals-lightest;
 
 .filters {
-  display: flex;
   flex-direction: column;
+  margin-top: 15px;
+
   &__sidebar {
     display: none;
     flex-direction: column;
-    background: $background-color;
+    background: white;
+    border: 1px solid colors.$neutrals-lightest;
     padding: 20px;
-    border-right: $dropdown-border;
+    border-radius: 16px;
     min-width: 200px;
 
     .filters-title {
@@ -24,38 +25,42 @@ $hover-color: #007bff;
       font-size: 18px;
     }
 
-
     .filters__group {
       margin-top: 20px;
 
       .filter-applied {
-        background-color: blue;
-        color: white;
+        background-color: colors.$neutrals-extra-light;
+        border-radius: 42px;
       }
 
       h3 {
-        font-size: 16px;
-        color: $primary-color;
+        @include fonts.font-body-large;
         margin-bottom: 10px;
       }
       ul {
         list-style: none;
         padding: 0;
         li {
+          margin-top: 6px;
+          border-bottom: 1px solid colors.$neutrals-lightest;
           button {
             width: 100%;
             text-align: left;
             background: none;
             border: none;
-            padding: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
             font-size: 14px;
             color: $primary-color;
             cursor: pointer;
+            padding-left: 16px;
 
             &:hover {
               background: $hover-color;
-              color: #fff;
+              border-radius: 42px;
             }
+            
           }
         }
       }
@@ -67,24 +72,28 @@ $hover-color: #007bff;
     flex-direction: column;
     gap: 10px;
 
-    .filter-applied {
-      background-color: blue;
-      color: white;
-    }
+    // .filters__group {
+    //   margin-top: 20px;
+
+    //   .filter-applied {
+    //     background-color: colors.$neutrals-extra-light;
+    //     border-radius: 42px;
+    //   }
+    // }
 
     .filters__dropdown-button {
-      background: $background-color;
-      border: $dropdown-border;
-      border-radius: 5px;
-      padding: 10px;
+      // background: colors.$secondary-light;
+      border-radius: 42px;
+      padding: 12px;
+      padding-left: 16px;
+      padding-right: 16px;
       font-size: 14px;
-      color: $primary-color;
+      // color: colors.$secondary-medium;
       text-align: left;
-      cursor: pointer;
 
       &:hover {
-        background: $hover-color;
-        color: #fff;
+        background: colors.$neutrals-extra-light;
+        // color: colors.$neutrals-extra-light;
       }
     }
 
@@ -92,9 +101,9 @@ $hover-color: #007bff;
       list-style: none;
       margin: 0;
       padding: 0;
-      border: $dropdown-border;
       border-radius: 5px;
       background: $background-color;
+      margin-top: 5px;
 
       li {
         button {
@@ -109,7 +118,7 @@ $hover-color: #007bff;
 
           &:hover {
             background: $hover-color;
-            color: #fff;
+            // color: #fff;
           }
         }
       }

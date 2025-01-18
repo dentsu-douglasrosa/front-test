@@ -108,6 +108,7 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
         state: {
             posts: shouldUseFilteredPosts ? filteredPosts : posts,
             loading,
+            isOnPostDetails,
         },
         controller: {}
     }

@@ -16,6 +16,10 @@ export interface UsePostDetailsReturn extends UseProps {
         latestPosts: Post[]
         loading: boolean
         post: PostDetails | undefined
+        labelLatestArticles: string
+        labelBack: string
     }
-    controller: UseProps["controller"] & {}
+    controller: UseProps["controller"] & {
+        onClickBack: () => void
+    }
 }
