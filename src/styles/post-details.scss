@@ -1,7 +1,110 @@
-.posts-details-container {
-  .post-details-thumbnail {
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
+$primary-color: #2d2d2d;
+$secondary-color: #555;
+$highlight-color: #ff4081;
+$font-family: 'Arial', sans-serif;
+
+.posts-details-container{
+    margin-top: 65px;
+    width: 80%;
+    padding: 20px;
+    text-align: justify;
+
+  .post-thumbnail-container {
+    .post-thumbnail {
+      width: 100%;
+      border-radius: 15px;
+      
+    }
   }
+
+  .post-header {
+      position: relative;
+      margin-bottom: 20px;
+
+      .post-title {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          font-size: 2.5rem;
+      }
+  }
+
+  .post-meta {
+      margin-bottom: 20px;
+
+      .author {
+          .author-profile-picture {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            object-fit: cover;
+            margin-right: 10px;
+          }
+
+          .author-name {
+              font-weight: bold;
+              font-size: 1.2rem;
+          }
+      }
+
+      .dates {
+          font-size: 0.9rem;
+          color: $secondary-color;
+      }
+  }
+
+  .post-content {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: $secondary-color;
+  }
+
+  .post-categories {
+      display: flex;
+      gap: 10px;
+      
+      .category {
+          background-color: $highlight-color;
+          color: white;
+          padding: 5px 15px;
+          border-radius: 20px;
+          font-size: 1rem;
+      }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .post-container {
+        width: 90%;
+    }
+
+    .post-title {
+        font-size: 2rem;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        gap: 10px;
+
+        .dates {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .post-header {
+        .post-title {
+            font-size: 1.8rem;
+        }
+    }
+
+    .post-categories {
+        flex-wrap: wrap;
+    }
 }
