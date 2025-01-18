@@ -1,13 +1,20 @@
+@use './fonts';
+@use './colors';
+
 .post-card {
   display: flex;
   flex-direction: column;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 314px;
   height: 425px;
   margin-bottom: 10px;
+  background: colors.$neutrals-lightest;
+
+  &:hover {
+    background: colors.$neutrals-extra-light;
+  }
 
   &-thumbnail {
     width: 314px;
@@ -18,19 +25,36 @@
   &-content {
     padding: 16px;
 
-    &-title {
-      font-size: 1.5rem;
-      margin: 0 0 8px;
+    &-date-author {
+      margin-bottom: 16px;
+
+      &-author {
+        @include fonts.font-caption;
+        font-family: fonts.$font-family;
+      }
+
+      &-dot {
+        @include fonts.font-caption;
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+
+      &-date {
+        @include fonts.font-caption;
+        font-family: fonts.$font-family;
+      }
     }
 
-    &-author {
-      font-size: 0.875rem;
-      color: #555;
-      margin-bottom: 12px;
+    &-title {
+      @include fonts.font-h3;;
+      font-family: fonts.$font-family;
+      margin-bottom: 16px;
+      
     }
 
     &-snippet {
-      font-size: 1rem;
+      @include fonts.font-body-small;;
+      text-align: justify;
       margin-bottom: 16px;
     }
 
@@ -40,10 +64,13 @@
       gap: 8px;
 
       &-category {
-        background: #f0f0f0;
-        border-radius: 4px;
-        padding: 4px 8px;
-        font-size: 0.75rem;
+        @include fonts.font-caption;
+        background: colors.$neutrals-extra-light;
+        border-radius: 50px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
     }
   }

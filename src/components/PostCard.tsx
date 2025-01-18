@@ -2,6 +2,7 @@ import React from "react";
 import { Post } from "src/types/posts.type";
 import "../styles/post-card.scss"
 import { usePostCard } from "src/hooks/usePostCard";
+import moment from "moment";
 
 interface PostCardProps {
   post: Post;
@@ -14,14 +15,20 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
     <div onClick={() => controller.onClick()} className="post-card">
       <img src={state.post.thumbnail_url} alt={state.post.title} className="post-card-thumbnail" />
       <div className="post-card-content">
-        <h2 className="post-card-title">{state.post.title}</h2>
-        <p className="post-card-author">
-          By {state.post.author.name} • {new Date(state.post.createdAt).toLocaleDateString()}
-        </p>
-        <p className="post-card-snippet">{state.post.content.slice(0, 100)}...</p>
-        <div className="post-card-categories">
+        <div className="post-card-content-date-author">
+          <span className="post-card-content-date-author-date">
+            {moment(new Date(state.post.createdAt)).format("MMM DD, YYYY")}
+          </span>
+          <span className="post-card-content-date-author-dot">•</span>
+          <span className="post-card-content-date-author-author">
+            {state.post.author.name}
+          </span>
+        </div>
+        <h2 className="post-card-content-title">{state.post.title}</h2>
+        <p className="post-card-content-snippet">{state.post.content.slice(0, 62)}...</p>
+        <div className="post-card-content-categories">
           {state.post.categories.map((category) => (
-            <span key={category.id} className="post-card-category">
+            <span key={category.id} className="post-card-content-categories-category">
               {category.name}
             </span>
           ))}

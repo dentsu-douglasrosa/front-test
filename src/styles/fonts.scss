@@ -1,6 +1,8 @@
 $font-family: 'Open Sans';
+$line-height-ratio: 1;
 
 @mixin font-h1 {
+    font-family: $font-family;
     font-size: 3.5rem;
     line-height: 130%;
     font-style: bold;
@@ -9,6 +11,7 @@ $font-family: 'Open Sans';
 }
 
 @mixin font-h2 {
+    font-family: $font-family;
     font-size: 2.25rem;
     line-height: 130%;
     font-style: bold;
@@ -16,6 +19,7 @@ $font-family: 'Open Sans';
 }
 
 @mixin font-h3 {
+    font-family: $font-family;
     font-size: 1.25rem;
     line-height: 130%;
     font-style: bold;
@@ -23,6 +27,7 @@ $font-family: 'Open Sans';
 }
 
 @mixin font-body-large {
+    font-family: $font-family;
     font-size: 1rem;
     line-height: 150%;
     font-style: normal;
@@ -30,6 +35,7 @@ $font-family: 'Open Sans';
 }
 
 @mixin font-body-small {
+    font-family: $font-family;
     font-size: .875rem;
     line-height: 150%;
     font-style: normal;
@@ -37,6 +43,7 @@ $font-family: 'Open Sans';
 }
 
 @mixin font-caption {
+    font-family: $font-family;
     font-size: .75rem;
     line-height: 130%;
     font-style: normal;
