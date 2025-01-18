@@ -1,6 +1,7 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchQuery } from 'src/redux/slices/filter.slice';
+import { resetFilters, setAuthorIds, setCategoryIds, setSearchQuery } from 'src/redux/slices/filter.slice';
 import { RootState } from 'src/types/redux.type';
 import { UseSearchInputReturn } from "src/types/search-input.type";
 
@@ -14,14 +15,21 @@ export const useSearchInput = (): UseSearchInputReturn => {
         const newQuery = e.target.value;
         setQuery(newQuery);
         dispatch(setSearchQuery(newQuery));
+        dispatch(setCategoryIds([]));
+        dispatch(setAuthorIds([]));
+    };
+
+    const onClickButton = () => {
     };
 
     return {
         state: {
             query,
+            inputPlaceholder: t('inputPlaceholder'),
         },
         controller: {
             handleSearchChange,
+            onClickButton,
         }
     }
 }

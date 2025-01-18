@@ -9,8 +9,10 @@ export interface SearchInputProps {
 export interface UseSearchInputReturn extends UseProps {
     state: UseProps["state"] & {
         query: string
+        inputPlaceholder: string
     }
     controller: UseProps["controller"] & {
         handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+        onClickButton: () => void
     }
 }

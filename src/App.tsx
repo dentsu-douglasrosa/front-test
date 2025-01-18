@@ -1,9 +1,8 @@
+import "./styles/app.scss"
 import React from "react";
-import Filters from "./components/Filters";
 import Header from "./components/Header";
 import Posts from "./pages/Posts";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import "./styles/app.scss"
 import PostDetails from "./pages/PostDetails";
 import store from './redux/store';
 import { Provider } from 'react-redux';

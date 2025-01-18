@@ -1,4 +1,6 @@
-$primary-font: 'Open Sans';
+@use './fonts';
+@use './spacing';
+
 $secondary-light: #ef4c84;
 $secondary-light-light: #f0b6ca;
 
@@ -15,14 +17,15 @@ html, body {
 }
 
 body {
-  font-family: $primary-font;
+  font-family: fonts.$font-family;
   color: grey;
   background: radial-gradient(circle at 90% 40%, $secondary-light-light, #ffffff, #ffffff, #ffffff)
 }
 
 .app-container {
-  padding: 10px;
-  padding-top: 70px;
+  padding-left: spacing.$horizontal-spacing;
+  padding-right: spacing.$horizontal-spacing;
   display: flex;
   flex-direction: row;
 }
+

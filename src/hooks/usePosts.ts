@@ -57,8 +57,8 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
             }
 
             if(!!searchQuery.length){
-                filteredPosts = filteredPosts.filter(
-                    filteredPost => filteredPost.title
+                filteredPosts = posts.filter(
+                    post => post.title
                         .toLocaleLowerCase()
                         .includes(searchQuery.toLocaleLowerCase())
                 )
