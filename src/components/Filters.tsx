@@ -18,14 +18,12 @@ const Filters = (): JSX.Element => {
         
         <SidebarFilter
           type={"category"}
-          visible={!state.shouldShowCategories}
           title={state.categoriesLabel}
           items={state.categories}
         />
 
         <SidebarFilter
           type={"author"}
-          visible={!state.shouldShowAuthors}
           title={state.authorsLabel}
           items={state.authors}
         />
@@ -43,16 +41,12 @@ const Filters = (): JSX.Element => {
       </aside>
       <div className="filters--mobile">
         <DropdownFilter
-            setShouldShow={controller.setShouldShowAuthors}
-            visible={state.shouldShowAuthors}
             type={"author"}
             title={state.authorsLabel}
             items={state.authors}
         />
 
           <DropdownFilter 
-            setShouldShow={controller.setShouldShowCategories}
-            visible={state.shouldShowCategories}
             type={"category"}
             title={state.categoriesLabel}
             items={state.categories}

@@ -2,20 +2,17 @@ import React from "react";
 import '../styles/filters.scss';
 import { DropdownFilterProps } from "src/types/filters.type";
 import { useFilter } from "src/hooks/useFilter";
+import Button from "./Button";
 
 const DropdownFilter = (props : DropdownFilterProps): JSX.Element => {
   const { state, controller } = useFilter(props)
 
   return (
-    <div>
-      <button
-        className="filters--dropdown-button"
-        onClick={() => controller.setShouldShow?.(state => !state)}
-      >
-        {state.title}
-      </button>
+    <div className="filters--group">
+      <Button iconRightClassName={state.iconRightClassName} size="small" label={state.title} onClick={controller.onClickDropdownFilter} />
+      
       {state.visible && (
-        <ul className="filters--dropdown">
+        <ul>
           {state.items?.map(item => {
             return (
                 <li key={`${state.type}--${item.id}`}>

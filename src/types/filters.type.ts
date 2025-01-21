@@ -16,7 +16,6 @@ export interface FiltersProps {
 }
 
 export interface DropdownFilterProps extends FilterProps {
-  setShouldShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface SidebarFilterProps extends FilterProps {
@@ -29,14 +28,10 @@ export interface UseFiltersReturn extends UseProps {
         authors: AuthorFilter[]
         categories: CategoryFilter[]
         loading: boolean
-        shouldShowCategories: boolean
-        shouldShowAuthors: boolean
         applyFiltersLabel: string
         isOnPostDetails: boolean
     }
     controller: UseProps["controller"] & {
-        setShouldShowCategories: React.Dispatch<React.SetStateAction<boolean>>
-        setShouldShowAuthors: React.Dispatch<React.SetStateAction<boolean>>
         onApplyFilters: () => void
     }
 }

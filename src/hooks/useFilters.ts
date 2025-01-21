@@ -19,9 +19,6 @@ export const useFilters = (): UseFiltersReturn => {
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
-    const [shouldShowCategories, setShouldShowCategories] = useState(false);
-    const [shouldShowAuthors, setShouldShowAuthors] = useState(false);
-
     const fetchCategories = async () => {
         try {
             const response = await fetch(ENDPOINTS.GET.CATEGORIES);
@@ -77,15 +74,11 @@ export const useFilters = (): UseFiltersReturn => {
             authors,
             categories,
             loading,
-            shouldShowCategories,
-            shouldShowAuthors,
             isOnPostDetails,
             applyFiltersWidth: rem(UI.SIDEBAR.WIDTH)
         },
         controller: {
             onApplyFilters,
-            setShouldShowCategories,
-            setShouldShowAuthors
         }
     }
 }

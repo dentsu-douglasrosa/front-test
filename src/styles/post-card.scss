@@ -1,6 +1,7 @@
 @use './fonts';
 @use './colors';
 @use './units';
+@use './sizes';
 
 .post-card {
   display: flex;
@@ -8,10 +9,11 @@
   border: units.rem(1) solid #ddd;
   border-radius: units.rem(16);
   overflow: hidden;
-  width: units.rem(314);
+  width: 300px;
   height: units.rem(425);
-  // margin-bottom: units.rem(10);
   background: colors.$neutrals-lightest;
+
+  margin:  units.rem(sizes.$postcard-gap-value-in-px); 
 
   &:hover {
     background: colors.$neutrals-extra-light;
@@ -19,7 +21,7 @@
   }
 
   &-thumbnail {
-    width: units.rem(314);
+    width: units.rem(sizes.$postcard-width-value-in-px);
     height: units.rem(196);
     object-fit: cover;
   }

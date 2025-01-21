@@ -1,4 +1,10 @@
 @use './units';
+@use './sizes';
+
+$minwidth-postcard: 
+  sizes.$postcard-width-value-in-px 
+  + sizes.$postcard-gap-value-in-px
+;
 
 .posts-container {
   display: flex;
@@ -6,7 +12,6 @@
   .posts-grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: units.rem(18);
+    grid-template-columns: repeat(auto-fit, minmax(#{$minwidth-postcard}px, 1fr));
   }
 }

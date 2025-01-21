@@ -24,3 +24,11 @@ $secondary-dark: #8c1038;
 $accent1-light: #00bfc1;
 $accent1-medium: #009598;
 $accent1-dark: #006c6e;
+
+@function hex-to-rgba($color, $opacity) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+  
+    @return rgba($r, $g, $b, $opacity);
+}

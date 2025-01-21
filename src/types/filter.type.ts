@@ -8,8 +8,6 @@ export interface FilterProps {
   type: FilterTypes
   title: string
   items: Filter[]
-  visible: boolean
-  setShouldShow?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface UseFilterReturn extends UseProps {
@@ -21,6 +19,5 @@ export interface UseFilterReturn extends UseProps {
     controller: UseProps["controller"] & {
         onFilterChange: (id: string) => void
         isFilterIdApplied: (id: string) => boolean
-        setShouldShow?: React.Dispatch<React.SetStateAction<boolean>>
     }
 }
