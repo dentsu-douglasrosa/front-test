@@ -1,22 +1,19 @@
 @use './spacing';
 @use './units';
-
-$header-color: #ffffff;
-$grey: #cecdcd;
+@use './colors';
 
 .header-container {
-  background: linear-gradient(to right, white, transparent);
   height: units.rem(80);
   width: 100%;
   display: flex;
   padding-left: spacing.$horizontal-spacing;
   padding-right: spacing.$horizontal-spacing;
-  color: black;
+  color: colors.$primary-dark;
   justify-content: space-between;
   align-items: center;
   border-bottom: units.rem(1) solid;
   border-width: units.rem(1);
-  border-color: $grey;
+  border-color: colors.$neutrals-light;
 
   .logo {
     display: flex;
@@ -38,21 +35,6 @@ $grey: #cecdcd;
       display: flex;
       margin: 0;
       padding: 0;
-
-      .nav-item {
-        margin: 0 0.5rem;
-
-        .nav-link {
-          color: $header-color;
-          text-decoration: none;
-          font-size: 1rem;
-
-          &:hover {
-            color: $grey;
-            text-decoration: none;
-          }
-        }
-      }
     }
   }
 }

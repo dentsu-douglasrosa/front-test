@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import { ENDPOINTS } from "src/constants/filters";
 import { AuthorFilter, CategoryFilter, UseFiltersReturn } from "src/types/filters.type";
 import { useTranslation } from 'react-i18next';
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { rem } from "src/utils/units";
 import { UI } from "src/constants/ui";
 
 export const useFilters = (): UseFiltersReturn => {
     const { t } = useTranslation();
-    const { id } = useParams<{ id: string }>();
+    // const { id } = useParams<{ id: string }>();
+    const location = useLocation();
+    const match = location.pathname.match(/\/posts\/([^/]+)/);
+    const id = match ? match[1] : null;
+
     const isOnPostDetails = !!id
 
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);

@@ -1,5 +1,5 @@
 export const UI = {
     SIDEBAR: {
-        WIDTH: 200
+        WIDTH: 150
     }
 }
