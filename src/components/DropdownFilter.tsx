@@ -3,29 +3,26 @@ import '../styles/filters.scss';
 import { DropdownFilterProps } from "src/types/filters.type";
 import { useFilter } from "src/hooks/useFilter";
 
-const DropdownFilter = ({
-  type,
-  title,
-  items,
-  setShouldShow,
-  visible
-} : DropdownFilterProps): JSX.Element => {
-  const { state, controller } = useFilter({ type })
+const DropdownFilter = (props : DropdownFilterProps): JSX.Element => {
+  const { state, controller } = useFilter(props)
 
   return (
     <div>
       <button
         className="filters__dropdown-button"
-        onClick={() => setShouldShow(state => !state)}
+        onClick={() => controller.setShouldShow?.(state => !state)}
       >
-        {title}
+        {state.title}
       </button>
-      {visible && (
+      {state.visible && (
         <ul className="filters__dropdown">
-          {items?.map(item => {
+          {state.items?.map(item => {
             return (
-                <li key={`${type}__${item.id}`}>
-                  <button className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} onClick={() => controller.onFilterChange(item.id)}>{item.name}</button>
+                <li key={`${state.type}__${item.id}`}>
+                  <button 
+                    className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} 
+                    onClick={() => controller.onFilterChange(item.id)}>{item.name}
+                  </button>
                 </li>
               )
             })}

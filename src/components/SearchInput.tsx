@@ -1,12 +1,9 @@
 import React from 'react';
 import '../styles/search-input.scss';
 import { useSearchInput } from "src/hooks/useSearchInput";
+import { SearchInputProps } from 'src/types/search-input.type';
 
-interface SearchProps {
-
-}
-
-const SearchInput = (_: SearchProps): JSX.Element => {
+const SearchInput = (_: SearchInputProps): JSX.Element => {
   const { state, controller } = useSearchInput()
 
   return (
@@ -18,7 +15,7 @@ const SearchInput = (_: SearchProps): JSX.Element => {
           onChange={controller.handleSearchChange}
           className='search-input'
         />
-        <button onClick={() => controller.onClickButton} className="search-button">
+        <button onClick={controller.onClickButton} className="search-button">
           <i className="fas fa-search"></i>
         </button>
       </div>

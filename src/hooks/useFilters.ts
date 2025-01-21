@@ -4,10 +4,10 @@ import { AuthorFilter, CategoryFilter, UseFiltersReturn } from "src/types/filter
 import { useTranslation } from 'react-i18next';
 
 export const useFilters = (): UseFiltersReturn => {
+    const { t } = useTranslation();
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const { t } = useTranslation();
 
     const [shouldShowCategories, setShouldShowCategories] = useState(false);
     const [shouldShowAuthors, setShouldShowAuthors] = useState(false);

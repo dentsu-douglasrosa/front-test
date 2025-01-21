@@ -16,12 +16,14 @@ const Filters = (): JSX.Element => {
         
         <SidebarFilter
           type={"category"}
+          visible={!state.shouldShowCategories}
           title={state.categoriesLabel}
           items={state.categories}
         />
 
         <SidebarFilter
           type={"author"}
+          visible={!state.shouldShowAuthors}
           title={state.authorsLabel}
           items={state.authors}
         />

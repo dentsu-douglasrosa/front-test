@@ -1,11 +1,12 @@
-import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import { ENDPOINTS } from "src/constants/posts";
 import { PostDetails, UsePostDetailsProps, UsePostDetailsReturn } from "src/types/post-details.type";
 
 export const usePostDetails = (_?: UsePostDetailsProps): UsePostDetailsReturn => {
     const { id } = useParams<{ id: string }>();
+    const { t } = useTranslation();
 
     const [post, setPost] = useState<PostDetails>();
     const [latestPosts, setLatestPosts] = useState<PostDetails[]>([]);

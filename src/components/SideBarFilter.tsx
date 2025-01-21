@@ -3,16 +3,16 @@ import '../styles/filters.scss';
 import { type SidebarFilterProps } from "src/types/filters.type";
 import { useFilter } from "src/hooks/useFilter";
 
-const SidebarFilter = ({ type, title, items }: SidebarFilterProps): JSX.Element => {
-  const { state, controller } = useFilter({ type })
+const SidebarFilter = (props: SidebarFilterProps): JSX.Element => {
+  const { state, controller } = useFilter(props)
 
   return (
     <div className="filters__group">
-      <h3>{title}</h3>
+      <h3>{state.title}</h3>
       <ul>
-        {items?.map(item => {
+        {state.items?.map(item => {
           return (
-            <li key={`${type}__${item.id}`}>
+            <li key={`${state.type}__${item.id}`}>
               <button className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} onClick={() => controller.onFilterChange(item.id)}>{item.name}</button>
             </li>
           )

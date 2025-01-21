@@ -11,16 +11,23 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['post'],
+  tags: ['autodocs'],
   argTypes: {},
   args: {},
   decorators: [
     (Story) => (
-      <Provider store={store}>
-        <MemoryRouter>
-          <Story />
-        </MemoryRouter>
-      </Provider>
+      <html>
+        <head>
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+        </head>
+        <body>
+          <Provider store={store}>
+            <MemoryRouter>
+              <Story />
+            </MemoryRouter>
+          </Provider>
+        </body>
+      </html>
     ),
   ],
 } satisfies Meta<typeof PostCard>;

@@ -3,6 +3,7 @@ import '../styles/post-details.scss';
 import { usePostDetails } from '../hooks/usePostDetails'
 import Posts from './Posts';
 import moment from 'moment';
+import Button from 'src/components/Button';
 
 const PostDetails = (): JSX.Element => {
   const { state, controller } = usePostDetails();
@@ -11,7 +12,13 @@ const PostDetails = (): JSX.Element => {
 
   return (
     <div className="posts-details-container">
-      <span onClick={() => controller.onClickBack()} className='post-details-back'>{state.labelBack}</span>
+      <Button 
+        size='small'
+        type='secondary'
+        iconLeftClassName='fas fa-arrow-left'
+        onClick={controller.onClickBack}
+        label={state.labelBack}
+      />
       <div className="post-header">
           <h1 className="post-title">{state.post.title}</h1>
       </div>

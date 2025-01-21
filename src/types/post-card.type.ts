@@ -13,5 +13,7 @@ export interface UsePostCardReturn extends UseProps {
     state: UseProps["state"] & {
         post: Post
     }
-    controller: UseProps["controller"] & {}
+    controller: UseProps["controller"] & {
+        onClick: () => void
+    }
 }

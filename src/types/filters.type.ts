@@ -1,6 +1,7 @@
 import { Author } from "./authors.type";
 import { Category } from "./categories.type";
 import { UseProps } from "./_shared.type";
+import { FilterProps } from "./filter.type";
 
 export type Filter = AuthorFilter | CategoryFilter
 export interface AuthorFilter extends Author {}
@@ -14,20 +15,12 @@ export interface FiltersProps {
 
 }
 
-export interface DropdownFilterProps {
-    type: FilterTypes
-    title: string
-    items: Filter[]
-    visible: boolean
-    setShouldShow: React.Dispatch<React.SetStateAction<boolean>>
-  }
-
-export interface SidebarFilterProps {
-  type: FilterTypes
-  title: string
-  items: Filter[]
+export interface DropdownFilterProps extends FilterProps {
+  setShouldShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+export interface SidebarFilterProps extends FilterProps {
+}
 export interface UseFiltersReturn extends UseProps {
     state: UseProps["state"] & {
         categoriesLabel: string

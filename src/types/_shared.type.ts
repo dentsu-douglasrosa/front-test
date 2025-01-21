@@ -1,4 +1,4 @@
 export interface UseProps {
     state?: { [key: string]: any }
-    controller?: { [key: string]: Function }
+    controller?: { [key: string]: any }
 } 

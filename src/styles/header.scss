@@ -25,6 +25,9 @@ $grey: #cecdcd;
       width: auto;
       height: 25px;
       margin-right: 0.5rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

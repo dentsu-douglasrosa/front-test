@@ -5,7 +5,9 @@ import { resetFilters, setAuthorIds, setCategoryIds } from 'src/redux/slices/fil
 import { UseFilterReturn, UseFilterProps } from "src/types/filter.type"
 import { RootState } from 'src/types/redux.type';
 
-export const useFilter = ({ type }: UseFilterProps): UseFilterReturn => {
+export const useFilter = (props: UseFilterProps): UseFilterReturn => {
+    const { setShouldShow } = props;
+
     const dispatch = useDispatch();
     const { categoryIds, authorIds } = useSelector((state: RootState) => state.filter);
     const navigate = useNavigate()
@@ -13,14 +15,14 @@ export const useFilter = ({ type }: UseFilterProps): UseFilterReturn => {
     const onFilterChange = (id: string) => {
         dispatch(resetFilters())
         
-        if(type === "author") dispatch(setAuthorIds([id]));
+        if(props.type === "author") dispatch(setAuthorIds([id]));
         else dispatch(setCategoryIds([id]));
         
         navigate(`/posts`)
     };
 
     const isFilterIdApplied = (id: string): boolean => {
-        const filterIds = type === "author" 
+        const filterIds = props.type === "author" 
             ?  authorIds
             : categoryIds
 
@@ -29,10 +31,14 @@ export const useFilter = ({ type }: UseFilterProps): UseFilterReturn => {
 
     return {
         state: {
+            title: props.title,
+            items: props.items,
+            visible: props.visible,
         },
         controller: {
             onFilterChange,
             isFilterIdApplied,
+            setShouldShow
         }
     }
 }

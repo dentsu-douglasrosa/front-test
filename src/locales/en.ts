@@ -4,7 +4,7 @@ const translation: {[key: string]: string } = {
     filtersLabel: "Filters",
     inputPlaceholder: 'Search',
     latestArticles: "Latest Articles",
-    labelBack: "Back"
+    back: "Back"
 }
 
 export default translation
