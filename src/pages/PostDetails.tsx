@@ -45,7 +45,9 @@ const PostDetails = (): JSX.Element => {
         <span className='latest-articles--title'>
           {state.labelLatestArticles}
         </span>
-        <Posts orderBy={"updatedAt"} limit={3} />
+        <div className='latest-articles--list'>
+          <Posts orderBy={"updatedAt"} limit={3} />
+        </div>
       </div>
     </div>
   );

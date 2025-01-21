@@ -10,13 +10,13 @@ const Sidebar = (): JSX.Element => {
   return (
     <div className="sidebar">
       <aside className="sidebar__sidebar">
-        <Button 
+        {state.isOnPostDetails && <Button 
           size='small'
           type='secondary'
           iconLeftClassName='fas fa-arrow-left'
           onClick={controller.onClickBack}
           label={state.labelBack}
-        />
+        />}
       </aside>
 
       <div className="sidebar__mobile">

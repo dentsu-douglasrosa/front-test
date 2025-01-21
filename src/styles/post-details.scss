@@ -1,13 +1,12 @@
 @use './colors';
 @use './fonts';
 @use './units';
+@use './breakpoints';
 
 .posts-details-container {
-  width: units.rem(100);
   margin-top: units.rem(65);
-  width: 80%;
+  // width: 80%;
   padding: units.rem(20);
-  text-align: justify;
 
   .post-thumbnail-container {
     .post-thumbnail {
@@ -18,18 +17,27 @@
   }
 
   .latest-articles {
-    margin-top: units.rem(15);
+    margin-top: units.rem(32);
     &--title {
-      @include fonts.font-h1;
+      @include fonts.font-h2;
+      @media (max-width: breakpoints.$breakpoint-md) {
+        @include fonts.font-h3;
+      }
+    }
+    &--list {
+      margin-top: units.rem(16);
     }
   }
 
-
   .post-header {
-      margin-bottom: units.rem(20);
-
+      margin-bottom: units.rem(16);
       .post-title {
         @include fonts.font-h1;
+
+        @media (max-width: breakpoints.$breakpoint-md) {
+          @include fonts.font-h2;
+          margin-bottom: units.rem(16);
+        }
       }
   }
 
@@ -59,6 +67,7 @@
   }
 
   .post-content {
+    text-align: justify;
     font-family: fonts.$font-family;
     margin-top: units.rem(20);
     margin-bottom: units.rem(40);

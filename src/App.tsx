@@ -24,6 +24,7 @@ const App: React.FC = () => {
               <Route path="/posts/:id" element={<PostDetails />} />
             </Routes>
           </div>
+          <aside className="main-sidebar" />
         </main>
       </Router>
     </Provider>

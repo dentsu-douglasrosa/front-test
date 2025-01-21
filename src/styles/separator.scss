@@ -2,7 +2,7 @@
 @use './colors';
 
 .separator {
-  height: units.rem(2);
+  height: units.rem(1);
   width: 100%;
   background-color: colors.$neutrals-extra-light;
 }

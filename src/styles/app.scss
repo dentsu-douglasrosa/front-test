@@ -3,6 +3,7 @@
 @use './spacing';
 @use './units';
 @use './breakpoints';
+@use './sizes';
 
 * {
   margin: 0;
@@ -44,5 +45,9 @@ main {
     @media (max-width: breakpoints.$breakpoint-md) {
       padding-top: units.rem(16);
     }
+  }
+
+  .main-sidebar {
+    min-width: sizes.$sidebar-width;
   }
 }

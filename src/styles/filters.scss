@@ -2,7 +2,6 @@
 @use './colors';
 @use './units';
 @use './breakpoints';
-@use './sizes';
 
 .filters {
   flex-direction: column;
@@ -15,7 +14,6 @@
     border: units.rem(1) solid colors.$neutrals-lightest;
     padding: units.rem(20);
     border-radius: units.rem(16);
-    min-width: sizes.$sidebar-width;
 
     .filters-title {
       @include fonts.font-h1;
