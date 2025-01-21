@@ -36,44 +36,6 @@
     display: flex;
     flex-direction: row;
     gap: units.rem(10);
-
-    .filter-applied {
-      padding-top: units.rem(12);
-      padding-bottom: units.rem(12);
-      background-color: colors.hex-to-rgba(colors.$accent1-light, 0.05);
-      color: colors.$accent1-dark;
-      border: units.rem(1) solid colors.$accent1-dark;
-      font-weight: bold;
-      border-radius: units.rem(12);
-    }
-    
-    // .ul {
-    //   flex: 1;
-    //   background: colors.$neutrals-extra-light;
-    //   list-style: none;
-    //   margin: 0;
-    //   padding: 0;
-    //   border-radius: units.rem(5);
-    //   margin-top: units.rem(5);
-
-    //   li {
-    //     button {
-    //       width: 100%;
-    //       text-align: left;
-    //       background: none;
-    //       border: none;
-    //       padding: units.rem(10);
-    //       font-size: units.rem(14);
-    //       color: colors.$neutrals-dark;
-    //       cursor: pointer;
-
-    //       &:hover {
-    //         background: colors.$neutrals-lightest;
-    //         // color: #fff;
-    //       }
-    //     }
-    //   }
-    // }
   }
 }
 
@@ -84,7 +46,6 @@
     background-color: colors.hex-to-rgba(colors.$accent1-light, 0.05);
     color: colors.$accent1-dark;
     border: units.rem(1) solid colors.$accent1-dark;
-    font-weight: bold;
     border-radius: units.rem(6);
   }
 

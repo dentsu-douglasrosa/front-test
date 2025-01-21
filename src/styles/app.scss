@@ -48,6 +48,10 @@ main {
   }
 
   .main-sidebar {
-    min-width: sizes.$sidebar-width;
+    width: sizes.$sidebar-width;
+  }
+
+  .main-sidebar-right {
+    width: sizes.$sidebar-width;
   }
 }

@@ -1,7 +1,11 @@
 @use './fonts';
 @use './colors';
 @use './units';
+@use './breakpoints';
 
 .sidebar {
-  margin-right: units.rem(32);
+  @media (max-width: breakpoints.$breakpoint-md) {
+    margin-top: units.rem(18);
+    align-self: center;
+  }
 }

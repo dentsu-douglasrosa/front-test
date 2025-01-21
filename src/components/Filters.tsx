@@ -46,11 +46,11 @@ const Filters = (): JSX.Element => {
             items={state.authors}
         />
 
-          <DropdownFilter 
-            type={"category"}
-            title={state.categoriesLabel}
-            items={state.categories}
-          />
+        <DropdownFilter 
+          type={"category"}
+          title={state.categoriesLabel}
+          items={state.categories}
+        />
           
       </div>
     </div>
