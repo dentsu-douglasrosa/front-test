@@ -1,0 +1,8 @@
+@use './units';
+@use './colors';
+
+.separator {
+  height: units.rem(2);
+  width: 100%;
+  background-color: colors.$neutrals-extra-light;
+}

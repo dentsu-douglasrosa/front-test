@@ -3,6 +3,7 @@ import '../styles/post-details.scss';
 import { usePostDetails } from '../hooks/usePostDetails'
 import Posts from './Posts';
 import moment from 'moment';
+import Separator from 'src/components/Separator';
 
 const PostDetails = (): JSX.Element => {
   const { state, controller } = usePostDetails();
@@ -39,8 +40,9 @@ const PostDetails = (): JSX.Element => {
               {state.post.content}
           </p>
       </div>
-      <div>
-        <span className='latest-articles-title'>
+      <Separator />
+      <div className='latest-articles'>
+        <span className='latest-articles--title'>
           {state.labelLatestArticles}
         </span>
         <Posts orderBy={"updatedAt"} limit={3} />

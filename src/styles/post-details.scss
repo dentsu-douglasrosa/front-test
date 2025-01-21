@@ -3,11 +3,11 @@
 @use './units';
 
 .posts-details-container {
-    width: units.rem(100);
-    margin-top: units.rem(65);
-    width: 80%;
-    padding: units.rem(20);
-    text-align: justify;
+  width: units.rem(100);
+  margin-top: units.rem(65);
+  width: 80%;
+  padding: units.rem(20);
+  text-align: justify;
 
   .post-thumbnail-container {
     .post-thumbnail {
@@ -17,9 +17,13 @@
     }
   }
 
-  .latest-articles-title {
-    @include fonts.font-h1;
+  .latest-articles {
+    margin-top: units.rem(15);
+    &--title {
+      @include fonts.font-h1;
+    }
   }
+
 
   .post-header {
       margin-bottom: units.rem(20);
@@ -31,6 +35,7 @@
 
   .post-meta {
       margin-bottom: units.rem(20);
+      font-family: fonts.$font-family;
 
       .author {
           .author-profile-picture {
@@ -54,10 +59,11 @@
   }
 
   .post-content {
-      margin-top: units.rem(20);
-      margin-bottom: units.rem(40);
-      font-size: 1rem;
-      line-height: 1.6;
-      color: colors.$primary-light;
+    font-family: fonts.$font-family;
+    margin-top: units.rem(20);
+    margin-bottom: units.rem(40);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: colors.$primary-light;
   }
 }
