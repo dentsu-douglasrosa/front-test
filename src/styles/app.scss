@@ -10,10 +10,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: #{units.$base-font-size}px;
-}
-
 body {
   background: radial-gradient(circle at 90% 40%, colors.$secondary-extra-light, #ffffff, #ffffff, #ffffff);
   width: 100%;

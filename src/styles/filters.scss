@@ -33,7 +33,8 @@
       margin-top: units.rem(20);
 
       .filter-applied {
-        background-color: colors.$neutrals-extra-light;
+        // background-color: colors.$neutrals-extra-light;
+        font-weight: bold;
         border-radius: units.rem(42);
       }
 
@@ -61,7 +62,7 @@
             padding-left: units.rem(16);
 
             &:hover {
-              background: colors.$neutrals-lightest;
+              // background: colors.$neutrals-lightest;
               border-radius: units.rem(42);
             }
             
