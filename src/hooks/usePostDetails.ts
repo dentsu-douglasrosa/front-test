@@ -64,10 +64,6 @@ export const usePostDetails = (_?: UsePostDetailsProps): UsePostDetailsReturn =>
         }
     };
 
-    const onClickBack = () => {
-        navigate(`/posts`)
-    }
-
     useEffect(() => {
         if(!id) return
         
@@ -85,10 +81,10 @@ export const usePostDetails = (_?: UsePostDetailsProps): UsePostDetailsReturn =>
             loading,
             post,
             labelLatestArticles: t('latestArticles'),
-            labelBack: t('back')
+            labelBack: t('back'),
+            writtenByLabel: t('writtenBy')
         },
         controller: {
-            onClickBack,
         }
     }
 }

@@ -31,9 +31,12 @@ export interface UseFiltersReturn extends UseProps {
         loading: boolean
         shouldShowCategories: boolean
         shouldShowAuthors: boolean
+        applyFiltersLabel: string
+        isOnPostDetails: boolean
     }
     controller: UseProps["controller"] & {
         setShouldShowCategories: React.Dispatch<React.SetStateAction<boolean>>
         setShouldShowAuthors: React.Dispatch<React.SetStateAction<boolean>>
+        onApplyFilters: () => void
     }
 }

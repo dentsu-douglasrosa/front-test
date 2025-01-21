@@ -2,9 +2,15 @@ import { useEffect, useState } from "react";
 import { ENDPOINTS } from "src/constants/filters";
 import { AuthorFilter, CategoryFilter, UseFiltersReturn } from "src/types/filters.type";
 import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
+import { rem } from "src/utils/units";
+import { UI } from "src/constants/ui";
 
 export const useFilters = (): UseFiltersReturn => {
     const { t } = useTranslation();
+    const { id } = useParams<{ id: string }>();
+    const isOnPostDetails = !!id
+
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -41,6 +47,10 @@ export const useFilters = (): UseFiltersReturn => {
         } catch (error) {}
     }
 
+    const onApplyFilters = () => {
+
+    }
+
     useEffect(() => {
         const init = async () => {
             setLoading(true)
@@ -59,13 +69,17 @@ export const useFilters = (): UseFiltersReturn => {
             categoriesLabel: t('categories'),
             authorsLabel: t('authors'),
             filtersLabel: t('filtersLabel'),
+            applyFiltersLabel: t('applyFilters'),
             authors,
             categories,
             loading,
             shouldShowCategories,
             shouldShowAuthors,
+            isOnPostDetails,
+            applyFiltersWidth: rem(UI.SIDEBAR.WIDTH)
         },
         controller: {
+            onApplyFilters,
             setShouldShowCategories,
             setShouldShowAuthors
         }

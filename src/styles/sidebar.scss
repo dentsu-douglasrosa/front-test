@@ -1,0 +1,7 @@
+@use './fonts';
+@use './colors';
+@use './units';
+
+.sidebar {
+  margin-right: units.rem(32);
+}

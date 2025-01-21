@@ -7,9 +7,9 @@
     color: white;
   }
   .button--secondary, .button--tertiary {
-    color: var(--var-color, colors.$secondary-light);
+    color: var(--var-color, colors.$secondary-medium);
     &:hover {
-      color: var(--var-color, colors.$secondary-medium);
+      color: var(--var-color, colors.$secondary-dark);
     }
   }
 };
@@ -34,20 +34,20 @@
 
   display: flex;
   flex-direction: row;
-
+  
   .button {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: auto;
+    width: var(--var-width, auto);
 
     &--primary {
-      border: units.rem(1) solid var(--var-color, colors.$secondary-light);
-      background-color: var(--var-background-color, colors.$secondary-light);
+      border: units.rem(1) solid var(--var-color, colors.$secondary-medium);
+      background-color: var(--var-background-color, colors.$secondary-medium);
       &:hover {
-        border: units.rem(1) solid colors.$secondary-medium;
-        background-color: var(--var-background-color, colors.$secondary-medium);
+        border: units.rem(1) solid colors.$secondary-dark;
+        background-color: var(--var-background-color, colors.$secondary-dark);
       }
     }
 
@@ -55,7 +55,7 @@
       border: units.rem(1) solid var(--var-color, colors.$secondary-light);
       background-color: var(--var-background-color, transparent);
       &:hover {
-        border: units.rem(1) solid var(--var-color, colors.$secondary-medium);
+        border: units.rem(1) solid var(--var-color, colors.$secondary-dark);
       }
     }
 

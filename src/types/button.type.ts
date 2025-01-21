@@ -15,6 +15,7 @@ export interface ButtonProps {
     iconRightClassName?: string
     backgroundColor?: string
     color?: string
+    width?: number | string
 }
 
 export interface UseButtonReturn extends UseProps {

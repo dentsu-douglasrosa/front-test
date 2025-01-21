@@ -3,6 +3,7 @@ import '../styles/filters.scss';
 import { useFilters } from "src/hooks/useFilters";
 import SidebarFilter from "./SideBarFilter";
 import DropdownFilter from "./DropdownFilter";
+import Button from "./Button";
 
 const Filters = (): JSX.Element => {
   const { state, controller } = useFilters();
@@ -28,8 +29,17 @@ const Filters = (): JSX.Element => {
           items={state.authors}
         />
 
-      </aside>
+        <div className="apply-filters">
+          <Button
+            size='small'
+            type='primary'
+            width={state.applyFiltersWidth}
+            onClick={controller.onApplyFilters}
+            label={state.applyFiltersLabel}
+          />
+        </div>
 
+      </aside>
       <div className="filters__mobile">
         <DropdownFilter
             setShouldShow={controller.setShouldShowAuthors}
@@ -45,7 +55,8 @@ const Filters = (): JSX.Element => {
             type={"category"}
             title={state.categoriesLabel}
             items={state.categories}
-        />
+          />
+          
       </div>
     </div>
   );

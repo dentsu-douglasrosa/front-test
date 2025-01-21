@@ -3,7 +3,6 @@ import '../styles/post-details.scss';
 import { usePostDetails } from '../hooks/usePostDetails'
 import Posts from './Posts';
 import moment from 'moment';
-import Button from 'src/components/Button';
 
 const PostDetails = (): JSX.Element => {
   const { state, controller } = usePostDetails();
@@ -12,23 +11,22 @@ const PostDetails = (): JSX.Element => {
 
   return (
     <div className="posts-details-container">
-      <Button 
-        size='small'
-        type='secondary'
-        iconLeftClassName='fas fa-arrow-left'
-        onClick={controller.onClickBack}
-        label={state.labelBack}
-      />
       <div className="post-header">
           <h1 className="post-title">{state.post.title}</h1>
       </div>
+
       <div className="post-meta">
-          <div className="author">
-              <img className="author-profile-picture" src={state.post.author.profilePicture} alt={state.post.title} />
-              <div>
-                <span className="author-name">{state.post.author.name}</span>
-                <div className="dates">
-                    <span className="updated-date">{moment(new Date(state.post.updatedAt)).format("MMM DD, YYYY")}</span>
+            <div className="author" style={{ flex: 1, flexDirection: 'row' }}>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <img className="author-profile-picture" src={state.post.author.profilePicture} alt={state.post.title} />
+                <div style={{ flexDirection: 'column' }}>
+                  <div style={{ flexDirection: 'row' }}>
+                    <span className="written-by">{state.writtenByLabel}</span>
+                    <span className="author-name">{state.post.author.name}</span>
+                  </div>
+                  <div className="dates">
+                      <span className="updated-date">{moment(new Date(state.post.updatedAt)).format("MMM DD, YYYY")}</span>
+                  </div>
                 </div>
               </div>
           </div>

@@ -10,7 +10,6 @@ const Posts = (props: PostsProps): JSX.Element => {
   
   return (
     <div className="posts-container">
-        {!state.isOnPostDetails && <Filters />}
         <div className='posts-grid'>
           {state.posts.map(post => {
             return <PostCard key={post.id} post={post} />

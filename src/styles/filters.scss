@@ -1,10 +1,8 @@
 @use './fonts';
 @use './colors';
 @use './units';
-
-$primary-color: #333;
-$background-color: #f9f9f9;
-$hover-color: colors.$neutrals-lightest;
+@use './breakpoints';
+@use './sizes';
 
 .filters {
   flex-direction: column;
@@ -17,13 +15,18 @@ $hover-color: colors.$neutrals-lightest;
     border: units.rem(1) solid colors.$neutrals-lightest;
     padding: units.rem(20);
     border-radius: units.rem(16);
-    min-width: units.rem(200);
+    min-width: sizes.$sidebar-width;
 
     .filters-title {
       @include fonts.font-h1;
       display: flex;
       align-items: center;
       font-size: units.rem(18);
+    }
+
+    .apply-filters {
+      align-self: center;
+      margin-top: units.rem(20);
     }
 
     .filters__group {
@@ -53,12 +56,12 @@ $hover-color: colors.$neutrals-lightest;
             padding-bottom: units.rem(5);
             margin-bottom: units.rem(5);
             font-size: units.rem(14);
-            color: $primary-color;
+            color: colors.$neutrals-dark;
             cursor: pointer;
             padding-left: units.rem(16);
 
             &:hover {
-              background: $hover-color;
+              background: colors.$neutrals-lightest;
               border-radius: units.rem(42);
             }
             
@@ -103,7 +106,7 @@ $hover-color: colors.$neutrals-lightest;
       margin: 0;
       padding: 0;
       border-radius: units.rem(5);
-      background: $background-color;
+      background: colors.$neutrals-extra-light;
       margin-top: units.rem(5);
 
       li {
@@ -114,11 +117,11 @@ $hover-color: colors.$neutrals-lightest;
           border: none;
           padding: units.rem(10);
           font-size: units.rem(14);
-          color: $primary-color;
+          color: colors.$neutrals-dark;
           cursor: pointer;
 
           &:hover {
-            background: $hover-color;
+            background: colors.$neutrals-lightest;
             // color: #fff;
           }
         }
@@ -127,7 +130,7 @@ $hover-color: colors.$neutrals-lightest;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: breakpoints.$breakpoint-md) {
   .filters {
     flex-direction: row;
 

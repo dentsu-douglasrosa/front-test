@@ -1,9 +1,10 @@
 import { t } from 'i18next';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/types/redux.type';
 import { type UseButtonProps, type UseButtonReturn } from 'src/types/button.type';
 import classNames from 'classnames';
+import { rem } from 'src/utils/units'
 
 export const useButton = (props: UseButtonProps): UseButtonReturn => {
     const { 
@@ -30,6 +31,7 @@ export const useButton = (props: UseButtonProps): UseButtonReturn => {
             styles: { 
                 '--var-background-color': props.backgroundColor,
                 '--var-color': props.color,
+                '--var-width': props.width,
             } as React.CSSProperties,
             iconLeftClassName: classNames(props.iconLeftClassName, {
                 [`left-icon`]: props.iconLeftClassName

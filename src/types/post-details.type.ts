@@ -18,8 +18,8 @@ export interface UsePostDetailsReturn extends UseProps {
         post: PostDetails | undefined
         labelLatestArticles: string
         labelBack: string
+        writtenByLabel: string
     }
     controller: UseProps["controller"] & {
-        onClickBack: () => void
     }
 }

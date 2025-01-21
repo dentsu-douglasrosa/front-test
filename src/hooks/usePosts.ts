@@ -8,9 +8,6 @@ import { Post, UsePostsProps, UsePostsReturn } from "src/types/posts.type";
 import { RootState } from "src/types/redux.type";
 
 export const usePosts = (props: UsePostsProps): UsePostsReturn => {
-    const { id } = useParams<{ id: string }>();
-    const isOnPostDetails = !!id
-
     const dispatch = useDispatch();
 
     const { posts } = useSelector((state: RootState) => state.posts);
@@ -108,7 +105,6 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
         state: {
             posts: shouldUseFilteredPosts ? filteredPosts : posts,
             loading,
-            isOnPostDetails,
         },
         controller: {}
     }
