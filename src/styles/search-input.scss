@@ -1,19 +1,20 @@
 @use './colors';
 @use './breakpoints';
 @use './fonts';
+@use './units';
 
 .search-input-container {
   display: flex;
   align-items: center;
-  border-radius: 50px;
+  border-radius: units.rem(50);
   overflow: hidden;
   
-  border: 1px solid colors.$neutrals-extra-light;
+  border: units.rem(1) solid colors.$neutrals-extra-light;
   color: colors.$neutrals-extra-dark;
   background-color: white;
-  padding-right: 8px;
-  padding-bottom: 8px;
-  padding-top: 8px;
+  padding-right: units.rem(8);
+  padding-bottom: units.rem(8);
+  padding-top: units.rem(8);
 
   @media (max-width: breakpoints.$breakpoint-md) {
     border: none;
@@ -21,7 +22,7 @@
   }
 
   &:hover {
-    border: 1px solid colors.$accent1-medium;
+    border: units.rem(1) solid colors.$accent1-medium;
     color: colors.$neutrals-extra-dark;
 
     @media (max-width: breakpoints.$breakpoint-md) {
@@ -32,12 +33,12 @@
 
   .search-input {
     flex: 1;
-    padding-left: 16px;
+    padding-left: units.rem(16);
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: units.rem(16);
     background-color: white;
-    width: 400px;
+    width: units.rem(400);
     font-family: fonts.$font-family;
 
     @media (max-width: breakpoints.$breakpoint-md) {
@@ -45,7 +46,7 @@
     }
 
     @media (max-width: breakpoints.$breakpoint-xl) {
-      width: 300px;
+      width: units.rem(300);
     }
   }
 
@@ -56,13 +57,13 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 50px;
-    width: 40px;
-    height: 40px;
+    border-radius: units.rem(50);
+    width: units.rem(40);
+    height: units.rem(40);
 
     i {
       color: colors.$neutrals-lightest;
-      font-size: 16px;
+      font-size: units.rem(16);
       
     }
   }

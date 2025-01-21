@@ -1,21 +1,18 @@
 @use './colors';
 @use './fonts';
+@use './units';
 
-$primary-color: #2d2d2d;
-$secondary-color: #555;
-$highlight-color: #555;
-$font-family: 'Arial', sans-serif;
-
-.posts-details-container{
-    margin-top: 65px;
+.posts-details-container {
+    width: units.rem(100);
+    margin-top: units.rem(65);
     width: 80%;
-    padding: 20px;
+    padding: units.rem(20);
     text-align: justify;
 
   .post-thumbnail-container {
     .post-thumbnail {
       width: 100%;
-      border-radius: 15px;
+      border-radius: units.rem(15);
       
     }
   }
@@ -25,25 +22,23 @@ $font-family: 'Arial', sans-serif;
   }
 
   .post-header {
-      margin-bottom: 20px;
+      margin-bottom: units.rem(20);
 
       .post-title {
         @include fonts.font-h1;
-          bottom: 20px;
-          left: 20px;
       }
   }
 
   .post-meta {
-      margin-bottom: 20px;
+      margin-bottom: units.rem(20);
 
       .author {
           .author-profile-picture {
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
+            width: units.rem(50);
+            height: units.rem(50);
+            border-radius: units.rem(25);
             object-fit: cover;
-            margin-right: 10px;
+            margin-right: units.rem(10);
           }
 
           .author-name {
@@ -54,63 +49,15 @@ $font-family: 'Arial', sans-serif;
 
       .dates {
           font-size: 0.9rem;
-          color: $secondary-color;
+          color: colors.$secondary-light;
       }
   }
 
   .post-content {
-      margin-top: 20px;
-      margin-bottom: 40px;
+      margin-top: units.rem(20);
+      margin-bottom: units.rem(40);
       font-size: 1rem;
       line-height: 1.6;
-      color: $secondary-color;
+      color: colors.$secondary-light;
   }
-
-  .post-categories {
-      display: flex;
-      gap: 10px;
-      
-      .category {
-          background-color: $highlight-color;
-          color: white;
-          padding: 5px 15px;
-          border-radius: 20px;
-          font-size: 1rem;
-      }
-  }
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-    .post-container {
-        width: 90%;
-    }
-
-    .post-title {
-        font-size: 2rem;
-        bottom: 10px;
-        left: 10px;
-    }
-
-    .post-meta {
-        flex-direction: column;
-        gap: 10px;
-
-        .dates {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    .post-header {
-        .post-title {
-            font-size: 1.8rem;
-        }
-    }
-
-    .post-categories {
-        flex-wrap: wrap;
-    }
 }

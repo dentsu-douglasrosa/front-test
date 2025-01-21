@@ -1,11 +1,12 @@
 @use './spacing';
+@use './units';
 
 $header-color: #ffffff;
 $grey: #cecdcd;
 
 .header-container {
   background: linear-gradient(to right, white, transparent);
-  height: 80px;
+  height: units.rem(80);
   width: 100%;
   display: flex;
   padding-left: spacing.$horizontal-spacing;
@@ -13,8 +14,8 @@ $grey: #cecdcd;
   color: black;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid;
-  border-width: 1px;
+  border-bottom: units.rem(1) solid;
+  border-width: units.rem(1);
   border-color: $grey;
 
   .logo {
@@ -23,7 +24,7 @@ $grey: #cecdcd;
 
     .logo-img {
       width: auto;
-      height: 25px;
+      height: units.rem(25);
       margin-right: 0.5rem;
       &:hover {
         cursor: pointer;

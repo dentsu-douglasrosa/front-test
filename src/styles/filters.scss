@@ -1,5 +1,6 @@
 @use './fonts';
 @use './colors';
+@use './units';
 
 $primary-color: #333;
 $background-color: #f9f9f9;
@@ -7,58 +8,58 @@ $hover-color: colors.$neutrals-lightest;
 
 .filters {
   flex-direction: column;
-  margin-top: 15px;
+  margin-top: units.rem(15);
 
   &__sidebar {
     display: none;
     flex-direction: column;
     background: white;
-    border: 1px solid colors.$neutrals-lightest;
-    padding: 20px;
-    border-radius: 16px;
-    min-width: 200px;
+    border: units.rem(1) solid colors.$neutrals-lightest;
+    padding: units.rem(20);
+    border-radius: units.rem(16);
+    min-width: units.rem(200);
 
     .filters-title {
       @include fonts.font-h1;
       display: flex;
       align-items: center;
-      font-size: 18px;
+      font-size: units.rem(18);
     }
 
     .filters__group {
-      margin-top: 20px;
+      margin-top: units.rem(20);
 
       .filter-applied {
         background-color: colors.$neutrals-extra-light;
-        border-radius: 42px;
+        border-radius: units.rem(42);
       }
 
       h3 {
         @include fonts.font-body-large;
-        margin-bottom: 10px;
+        margin-bottom: units.rem(10);
       }
       ul {
         list-style: none;
         padding: 0;
         li {
-          margin-top: 6px;
-          border-bottom: 1px solid colors.$neutrals-lightest;
+          margin-top: units.rem(6);
+          border-bottom: units.rem(1) solid colors.$neutrals-lightest;
           button {
             width: 100%;
             text-align: left;
             background: none;
             border: none;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            margin-bottom: 5px;
-            font-size: 14px;
+            padding-top: units.rem(5);
+            padding-bottom: units.rem(5);
+            margin-bottom: units.rem(5);
+            font-size: units.rem(14);
             color: $primary-color;
             cursor: pointer;
-            padding-left: 16px;
+            padding-left: units.rem(16);
 
             &:hover {
               background: $hover-color;
-              border-radius: 42px;
+              border-radius: units.rem(42);
             }
             
           }
@@ -70,24 +71,24 @@ $hover-color: colors.$neutrals-lightest;
   &__mobile {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: units.rem(10);
 
     // .filters__group {
-    //   margin-top: 20px;
+    //   margin-top: units.rem(20);
 
     //   .filter-applied {
     //     background-color: colors.$neutrals-extra-light;
-    //     border-radius: 42px;
+    //     border-radius: units.rem(42);
     //   }
     // }
 
     .filters__dropdown-button {
       // background: colors.$secondary-light;
-      border-radius: 42px;
-      padding: 12px;
-      padding-left: 16px;
-      padding-right: 16px;
-      font-size: 14px;
+      border-radius: units.rem(42);
+      padding: units.rem(12);
+      padding-left: units.rem(16);
+      padding-right: units.rem(16);
+      font-size: units.rem(14);
       // color: colors.$secondary-medium;
       text-align: left;
 
@@ -101,9 +102,9 @@ $hover-color: colors.$neutrals-lightest;
       list-style: none;
       margin: 0;
       padding: 0;
-      border-radius: 5px;
+      border-radius: units.rem(5);
       background: $background-color;
-      margin-top: 5px;
+      margin-top: units.rem(5);
 
       li {
         button {
@@ -111,8 +112,8 @@ $hover-color: colors.$neutrals-lightest;
           text-align: left;
           background: none;
           border: none;
-          padding: 10px;
-          font-size: 14px;
+          padding: units.rem(10);
+          font-size: units.rem(14);
           color: $primary-color;
           cursor: pointer;
 

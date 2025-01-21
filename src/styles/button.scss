@@ -1,6 +1,6 @@
 @use './colors';
-// @use './breakpoints';
 @use './fonts';
+@use './units';
 
 @mixin color {
   .button--primary {
@@ -16,15 +16,15 @@
 
 @mixin font-size {
   .small {
-    font-size: 16px;
+    font-size: units.rem(16);
   }
 
   .button--medium {
-    font-size: 18px;
+    font-size: units.rem(18);
   }
   
   .button--large {
-    font-size: 20px;
+    font-size: units.rem(20);
   }
 };
 
@@ -43,58 +43,58 @@
     width: auto;
 
     &--primary {
-      border: 1px solid var(--var-color, colors.$secondary-light);
+      border: units.rem(1) solid var(--var-color, colors.$secondary-light);
       background-color: var(--var-background-color, colors.$secondary-light);
       &:hover {
-        border: 1px solid colors.$secondary-medium;
+        border: units.rem(1) solid colors.$secondary-medium;
         background-color: var(--var-background-color, colors.$secondary-medium);
       }
     }
 
     &--secondary {
-      border: 1px solid var(--var-color, colors.$secondary-light);
+      border: units.rem(1) solid var(--var-color, colors.$secondary-light);
       background-color: var(--var-background-color, transparent);
       &:hover {
-        border: 1px solid var(--var-color, colors.$secondary-medium);
+        border: units.rem(1) solid var(--var-color, colors.$secondary-medium);
       }
     }
 
     &--tertiary {
-      border: 1px solid var(--var-color, colors.$secondary-light);
+      border: units.rem(1) solid var(--var-color, colors.$secondary-light);
       background-color: var(--var-background-color, colors.$secondary-lightest);
       &:hover {
-        border: 1px solid var(--var-color, colors.$secondary-medium);
+        border: units.rem(1) solid var(--var-color, colors.$secondary-medium);
         background-color: var(--var-background-color, colors.$secondary-extra-light);
       }
     }
 
     &--small {
-      height: 40px;
-      border-radius: 20px;
-      padding-left: 16px;
-      padding-right: 16px;
+      height: units.rem(40);
+      border-radius: units.rem(20);
+      padding-left: units.rem(16);
+      padding-right: units.rem(16);
     }
 
     &--medium {
-      height: 50px;
-      border-radius: 30px;
-      padding-left: 30px;
-      padding-right: 30px;
+      height: units.rem(50);
+      border-radius: units.rem(30);
+      padding-left: units.rem(30);
+      padding-right: units.rem(30);
     }
 
     &--large {
-      height: 60px;
-      border-radius: 40px;
-      padding-left: 40px;
-      padding-right: 40px;
+      height: units.rem(60);
+      border-radius: units.rem(40);
+      padding-left: units.rem(40);
+      padding-right: units.rem(40);
     }
 
     .right-icon {
-      margin-left: 10px;
+      margin-left: units.rem(10);
     }
 
     .left-icon {
-      margin-right: 10px;
+      margin-right: units.rem(10);
     }
   }
 }

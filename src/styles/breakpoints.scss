@@ -1,17 +1,19 @@
+@use './units';
+
 // Extra Small Devices (e.g., small phones)
-$breakpoint-xs: 320px;
+$breakpoint-xs: units.rem(320);
 
 // Small Devices (e.g., phones)
-$breakpoint-sm: 576px;
+$breakpoint-sm: units.rem(576);
 
 // Medium Devices (e.g., tablets)
-$breakpoint-md: 768px;
+$breakpoint-md: units.rem(768);
 
 // Large Devices (e.g., desktops)
-$breakpoint-lg: 992px;
+$breakpoint-lg: units.rem(992);
 
 // Extra Large Devices (e.g., large desktops)
-$breakpoint-xl: 1200px;
+$breakpoint-xl: units.rem(1200);
 
 // Ultra Large Devices (e.g., 4K screens)
-$breakpoint-xxl: 1400px;
+$breakpoint-xxl: units.rem(1400);

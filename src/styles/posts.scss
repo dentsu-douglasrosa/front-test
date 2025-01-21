@@ -1,3 +1,5 @@
+@use './units';
+
 .posts-container {
   display: flex;
 
@@ -5,7 +7,7 @@
     flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 16px;
-    padding: 16px;
+    gap: units.rem(16);
+    padding: units.rem(16);
   }
 }

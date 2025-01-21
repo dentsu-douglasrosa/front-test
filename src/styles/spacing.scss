@@ -1,1 +1,3 @@
-$horizontal-spacing: 30px;
+@use './units';
+
+$horizontal-spacing: units.rem(30);
