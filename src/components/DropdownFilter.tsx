@@ -9,16 +9,16 @@ const DropdownFilter = (props : DropdownFilterProps): JSX.Element => {
   return (
     <div>
       <button
-        className="filters__dropdown-button"
+        className="filters--dropdown-button"
         onClick={() => controller.setShouldShow?.(state => !state)}
       >
         {state.title}
       </button>
       {state.visible && (
-        <ul className="filters__dropdown">
+        <ul className="filters--dropdown">
           {state.items?.map(item => {
             return (
-                <li key={`${state.type}__${item.id}`}>
+                <li key={`${state.type}--${item.id}`}>
                   <button 
                     className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} 
                     onClick={() => controller.onFilterChange(item.id)}>{item.name}

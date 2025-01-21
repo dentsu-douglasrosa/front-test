@@ -7,12 +7,12 @@ const SidebarFilter = (props: SidebarFilterProps): JSX.Element => {
   const { state, controller } = useFilter(props)
 
   return (
-    <div className="filters__group">
+    <div className="filters--group">
       <h3>{state.title}</h3>
       <ul>
         {state.items?.map(item => {
           return (
-            <li key={`${state.type}__${item.id}`}>
+            <li key={`${state.type}--${item.id}`}>
               <button className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} onClick={() => controller.onFilterChange(item.id)}>{item.name}</button>
             </li>
           )

@@ -10,8 +10,9 @@ const Filters = (): JSX.Element => {
 
   return (
     <div className="filters">
-      <aside className="filters__sidebar">
+      <aside className="filters--sidebar">
         <div className="filters-title">
+          <i className="fas fa-sliders filters-title-icon"></i>
           <h2>{state.filtersLabel}</h2>
         </div>
         
@@ -40,7 +41,7 @@ const Filters = (): JSX.Element => {
         </div>
 
       </aside>
-      <div className="filters__mobile">
+      <div className="filters--mobile">
         <DropdownFilter
             setShouldShow={controller.setShouldShowAuthors}
             visible={state.shouldShowAuthors}
