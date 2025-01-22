@@ -24,6 +24,7 @@
 
     li {
       border-bottom: units.rem(1) solid colors.$neutrals-lightest;
+      
       button {
         margin-top: units.rem(12);
         margin-bottom: units.rem(12);
@@ -48,62 +49,54 @@
 }
 
 .filters {
-  flex-direction: column;
-  margin-top: units.rem(15);
-
   &--sidebar {
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border: units.rem(1) solid colors.$neutrals-lightest;
-    padding: units.rem(20);
-    border-radius: units.rem(16);
-
-    
-
-    .filters-title {
-      @include fonts.font-h1;
+    display: none;
+    @media (min-width: breakpoints.$breakpoint-md) {
+      flex-direction: column;
+      margin-top: units.rem(15);
       display: flex;
-      align-items: center;
-      font-size: units.rem(18);
-
-      &-icon {
-        margin-right: units.rem(12);
+      flex-direction: column;
+      background: white;
+      border: units.rem(1) solid colors.$neutrals-lightest;
+      padding: units.rem(20);
+      border-radius: units.rem(16);
+      .filters-title {
+        @include fonts.font-h1;
+        display: flex;
+        align-items: center;
+        font-size: units.rem(18);
+  
+        &-icon {
+          margin-right: units.rem(12);
+        }
       }
+  
+      .apply-filters {
+        align-self: center;
+        margin-top: units.rem(20);
+      }
+  
+      @include filters-group;
     }
-
-    .apply-filters {
-      align-self: center;
-      margin-top: units.rem(20);
-    }
-
-    @include filters-group;
   }
 
   &--mobile {
-    &-buttons {
-      display: none;
-      flex-direction: row;
-      gap: units.rem(8);
-    }
-    &-group {
+    display: none;
+    @media (max-width: breakpoints.$breakpoint-md) {
       display: flex;
-      @include filters-group;
       flex-direction: column;
-    }
-  }
 
-  @media (max-width: breakpoints.$breakpoint-md) {
-    &--sidebar {
-      display: none;
-    }
-    &--mobile-buttons {
-      display: flex;
-    }
-    &-group {
-      display: flex;
-      @include filters-group;
-      flex-direction: column;
+      &-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: units.rem(8);
+      }
+      
+      &-group {
+        display: flex;
+        flex-direction: column;
+        @include filters-group;
+      }
     }
   }
 }
