@@ -6,7 +6,9 @@ const translation: {[key: string]: string } = {
     latestArticles: "Latest Articles",
     back: "Back",
     writtenBy: "Written by: ",
-    applyFilters: "Apply filters"
+    applyFilters: "Apply filters",
+    dwsBlog: "DWS Blog",
+    sortBy: "Sort by: ",
 }
 
 export default translation

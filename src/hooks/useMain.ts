@@ -1,8 +1,10 @@
 import { UseMainReturn, UseMainProps } from "src/types/main.type";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export const useMain = (_?: UseMainProps): UseMainReturn => {
+    const { t } = useTranslation();
     // const { id } = useParams<{ id: string }>();
     const location = useLocation();
     const match = location.pathname.match(/\/posts\/([^/]+)/);
@@ -13,6 +15,8 @@ export const useMain = (_?: UseMainProps): UseMainReturn => {
     return {
         state: {
             isOnPostDetails,
+            mainLabel: t('dwsBlog'),
+            sortByLabel: t('sortBy')
         },
         controller: {
         }

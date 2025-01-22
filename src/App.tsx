@@ -25,6 +25,11 @@ const Main: React.FC = () => {
   const { state, controller } = useMain()
   
   return (
+    <div>
+      {!state.isOnPostDetails && <div className="sub-header">
+        <span className="main-label">{state.mainLabel}</span>
+        <span className="main-sort-by">{state.sortByLabel}</span>
+      </div>}
       <main>
         <aside className="main-sidebar">
           <Sidebar />
@@ -38,6 +43,7 @@ const Main: React.FC = () => {
         </div>
         {state.isOnPostDetails && <aside className="main-sidebar-right" />}
       </main>
+    </div>
   );
 };
 
