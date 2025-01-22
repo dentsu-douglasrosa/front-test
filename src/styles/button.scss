@@ -9,7 +9,7 @@
   .button--secondary, .button--tertiary {
     color: var(--var-color, colors.$secondary-medium);
     &:hover {
-      color: var(--var-color, colors.$secondary-dark);
+      // color: var(--var-color, colors.$secondary-dark);
     }
   }
 };
@@ -55,7 +55,8 @@
       border: units.rem(1) solid var(--var-color, colors.$secondary-light);
       background-color: var(--var-background-color, transparent);
       &:hover {
-        border: units.rem(1) solid var(--var-color, colors.$secondary-dark);
+        // border: units.rem(1) solid var(--var-color, colors.$secondary-dark);
+        background-color: var(--var-background-color, colors.$secondary-lightest);
       }
     }
 
