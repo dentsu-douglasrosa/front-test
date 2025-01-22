@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ENDPOINTS } from "src/constants/posts";
 import { resetFilters } from "src/redux/slices/filter.slice";
-import { setPosts } from "src/redux/slices/posts.slice";
+import { resetPosts, setPosts } from "src/redux/slices/posts.slice";
+import { SortTypes } from "src/types/filters.type";
 import { Post, UsePostsProps, UsePostsReturn } from "src/types/posts.type";
 import { RootState } from "src/types/redux.type";
 
@@ -14,7 +15,8 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
     const {
         authorIds,
         categoryIds,
-        searchQuery
+        searchQuery,
+        sortType,
     } = useSelector((state: RootState) => state.filter);
 
     const [loading, setLoading] = useState<boolean>(true);
@@ -26,11 +28,19 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
             || !!searchQuery.length
     }, [categoryIds, authorIds, searchQuery])
     
-    const sortPosts = (postsParam: Post[]): Post[] => postsParam.sort((a, b) => {
-        const dateA = new Date(a.updatedAt).getTime();
-        const dateB = new Date(b.updatedAt).getTime();
-        return dateB - dateA;
-    });
+    const sortPosts = (postsParam: Post[], type: SortTypes): Post[] => {
+        const postsCopy = [...postsParam];
+
+        return postsCopy.sort((a, b) => {
+            const dateA = new Date(a.updatedAt).getTime();
+            const dateB = new Date(b.updatedAt).getTime();
+    
+            if (type === "newest") return dateB - dateA;
+            else if (type === "oldest") return dateA - dateB;
+
+            return 0;
+        });
+    };
 
     const filterPosts = (posts: Post[]) => {
         if(!categoryIds.length 
@@ -83,7 +93,7 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
                         && 'content' in data[0]
                     ) 
 
-                    if(props?.orderBy === "updatedAt") data = sortPosts(data)
+                    if(props?.orderBy === "updatedAt") data = sortPosts(data, "newest")
                     if(props?.limit) data = data.slice(0, props?.limit)
 
                     dispatch(setPosts(data))
@@ -96,6 +106,12 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
 
         fetchPosts();
     }, [dispatch]);
+
+    useEffect(() => {
+        if(!posts.length || !sortType) return
+        
+        dispatch(setPosts(sortPosts(posts, sortType)))
+    }, [sortType]);
 
     useEffect(() => {
         filterPosts(posts)
