@@ -13,7 +13,12 @@ const SidebarFilter = (props: SidebarFilterProps): JSX.Element => {
         {state.items?.map(item => {
           return (
             <li key={`${state.type}--${item.id}`}>
-              <button className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} onClick={() => controller.onFilterChange(item.id)}>{item.name}</button>
+              <button
+                className={controller.isFilterIdApplied(item.id, state.type) ? "filter-applied" : undefined} 
+                onClick={() => controller.onSelectItem(item.id, state.type)}
+              >
+                {item.name}
+              </button>
             </li>
           )
         })}

@@ -13,10 +13,6 @@ export const useButton = (props: UseButtonProps): UseButtonReturn => {
     } = props
     const dispatch = useDispatch();
     
-    const onClick = () => {
-        props.onClick()
-    };
-
     return {
         state: {
             label: props.label,
@@ -41,7 +37,7 @@ export const useButton = (props: UseButtonProps): UseButtonReturn => {
             }),
         },
         controller: {
-            onClick,
+            onClick: props.onClick,
         }
     }
 }

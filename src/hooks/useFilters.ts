@@ -1,12 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ENDPOINTS } from "src/constants/filters";
-import { AuthorFilter, CategoryFilter, UseFiltersReturn } from "src/types/filters.type";
+import { AuthorFilter, CategoryFilter, Filter, FilterTypes, UseFiltersReturn } from "src/types/filters.type";
 import { useTranslation } from 'react-i18next';
 import { useParams, useLocation } from "react-router-dom";
 import { rem } from "src/utils/units";
 import { UI } from "src/constants/ui";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "src/types/redux.type";
+import { resetFilters, setAuthorIds, setCategoryIds } from "src/redux/slices/filter.slice";
 
 export const useFilters = (): UseFiltersReturn => {
+    const [shouldShowItems, setShouldShowItems] = useState<Record<FilterTypes, boolean>>({ 
+        category: false,
+        author: false,
+    });
+    const { categoryIds, authorIds } = useSelector((state: RootState) => state.filter);
+    const dispatch = useDispatch();
     const { t } = useTranslation();
     // const { id } = useParams<{ id: string }>();
     const location = useLocation();
@@ -18,6 +27,40 @@ export const useFilters = (): UseFiltersReturn => {
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    
+    const dropdownOpen: FilterTypes | undefined = useMemo(() => {
+        if(shouldShowItems['author']) return "author"
+        else if(shouldShowItems['category']) return "category"
+
+        return undefined
+    }, [shouldShowItems])
+    
+    const items: Filter[] = useMemo(() => {
+        if(shouldShowItems['author']) return authors
+        else if(shouldShowItems['category']) return categories
+        
+        return []
+    }, [shouldShowItems, categories, authors])
+
+    const isFilterIdApplied = (id: string, type: FilterTypes): boolean => {
+        const filterIds = type === "author" 
+            ?  authorIds
+            : categoryIds
+
+        return filterIds.includes(id)
+    }
+    
+    const onSelectItem = (id: string, type: FilterTypes) => {
+        if(categoryIds.includes(id) || authorIds.includes(id)) {
+            dispatch(resetFilters())
+            return
+        }
+
+        dispatch(resetFilters())
+        
+        if(type === "author") dispatch(setAuthorIds([id]));
+        else dispatch(setCategoryIds([id]));
+    };
 
     const fetchCategories = async () => {
         try {
@@ -49,7 +92,21 @@ export const useFilters = (): UseFiltersReturn => {
     }
 
     const onApplyFilters = () => {
+        // TODO
+    }
 
+    const onToggleDropdown = (type: FilterTypes) => {
+        if(shouldShowItems[type]) {
+            setShouldShowItems(state => ({
+                category: false,
+                author: false,
+            }))
+        } else {
+            setShouldShowItems({
+                category: type === "category",
+                author: type === "author",
+            })
+        }
     }
 
     useEffect(() => {
@@ -75,10 +132,18 @@ export const useFilters = (): UseFiltersReturn => {
             categories,
             loading,
             isOnPostDetails,
-            applyFiltersWidth: rem(UI.SIDEBAR.WIDTH)
+            applyFiltersWidth: rem(UI.SIDEBAR.WIDTH),
+            shouldShowItems,
+            iconRightClassNameAuthor: shouldShowItems['author'] ? "fas fa-angle-up" : "fas fa-angle-down",
+            iconRightClassNameCategory: shouldShowItems['category'] ? "fas fa-angle-up" : "fas fa-angle-down",
+            items,
+            dropdownOpen,
         },
         controller: {
+            onSelectItem,
             onApplyFilters,
+            isFilterIdApplied,
+            onToggleDropdown,
         }
     }
 }

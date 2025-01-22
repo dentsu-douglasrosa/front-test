@@ -9,22 +9,12 @@ const DropdownFilter = (props : DropdownFilterProps): JSX.Element => {
 
   return (
     <div className="filters--group">
-      <Button iconRightClassName={state.iconRightClassName} size="small" label={state.title} onClick={controller.onClickDropdownFilter} />
-      
-      {state.visible && (
-        <ul>
-          {state.items?.map(item => {
-            return (
-                <li key={`${state.type}--${item.id}`}>
-                  <button 
-                    className={controller.isFilterIdApplied(item.id) ? "filter-applied" : undefined} 
-                    onClick={() => controller.onFilterChange(item.id)}>{item.name}
-                  </button>
-                </li>
-              )
-            })}
-        </ul>
-      )}
+      <Button
+        iconRightClassName={state.iconRightClassName} 
+        size="small" 
+        label={state.title} 
+        onClick={controller.onToggleDropdown}
+      />
     </div>
   )
 }

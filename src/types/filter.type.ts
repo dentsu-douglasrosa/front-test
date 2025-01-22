@@ -2,22 +2,28 @@ import { DropdownFilterProps, Filter, FilterTypes } from "./filters.type"
 import { UseProps } from "./_shared.type"
 
 export interface UseFilterProps extends FilterProps {
+    onToggleDropdown: (type: FilterTypes) => void
 }
 
 export interface FilterProps {
   type: FilterTypes
   title: string
   items: Filter[]
+  onSelectItem: (id: string, type: FilterTypes) => void
+  isFilterIdApplied: (id: string, type: FilterTypes) => boolean
+  iconRightClassName: string
 }
 
 export interface UseFilterReturn extends UseProps {
     state: UseProps["state"] & {
         title: string
         items: Filter[]
-        visible: boolean
+        type: FilterTypes
+        iconRightClassName: string
     }
     controller: UseProps["controller"] & {
-        onFilterChange: (id: string) => void
-        isFilterIdApplied: (id: string) => boolean
+        onSelectItem: (id: string, type: FilterTypes) => void
+        isFilterIdApplied: (id: string, type: FilterTypes) => boolean
+        onToggleDropdown: (type: FilterTypes) => void
     }
 }

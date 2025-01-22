@@ -3,43 +3,7 @@
 @use './units';
 @use './breakpoints';
 
-.filters {
-  flex-direction: column;
-  margin-top: units.rem(15);
-
-  &--sidebar {
-    display: none;
-    flex-direction: column;
-    background: white;
-    border: units.rem(1) solid colors.$neutrals-lightest;
-    padding: units.rem(20);
-    border-radius: units.rem(16);
-
-    .filters-title {
-      @include fonts.font-h1;
-      display: flex;
-      align-items: center;
-      font-size: units.rem(18);
-
-      &-icon {
-        margin-right: units.rem(12);
-      }
-    }
-
-    .apply-filters {
-      align-self: center;
-      margin-top: units.rem(20);
-    }
-  }
-
-  &--mobile {
-    display: flex;
-    flex-direction: row;
-    gap: units.rem(10);
-  }
-}
-
-.filters--group {
+@mixin filters-group {
   margin-top: units.rem(20);
 
   .filter-applied {
@@ -83,16 +47,63 @@
   }
 }
 
-@media (min-width: breakpoints.$breakpoint-md) {
-  .filters {
-    flex-direction: row;
+.filters {
+  flex-direction: column;
+  margin-top: units.rem(15);
 
-    &--sidebar {
+  &--sidebar {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: units.rem(1) solid colors.$neutrals-lightest;
+    padding: units.rem(20);
+    border-radius: units.rem(16);
+
+    
+
+    .filters-title {
+      @include fonts.font-h1;
       display: flex;
+      align-items: center;
+      font-size: units.rem(18);
+
+      &-icon {
+        margin-right: units.rem(12);
+      }
     }
 
-    &--mobile {
+    .apply-filters {
+      align-self: center;
+      margin-top: units.rem(20);
+    }
+
+    @include filters-group;
+  }
+
+  &--mobile {
+    &-buttons {
       display: none;
+      flex-direction: row;
+      gap: units.rem(8);
+    }
+    &-group {
+      display: flex;
+      @include filters-group;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: breakpoints.$breakpoint-md) {
+    &--sidebar {
+      display: none;
+    }
+    &--mobile-buttons {
+      display: flex;
+    }
+    &-group {
+      display: flex;
+      @include filters-group;
+      flex-direction: column;
     }
   }
 }

@@ -17,15 +17,23 @@ const Filters = (): JSX.Element => {
         </div>
         
         <SidebarFilter
+          iconRightClassName={state.iconRightClassNameCategory}
+          onToggleDropdown={() => controller.onToggleDropdown("category")}
+          isFilterIdApplied={controller.isFilterIdApplied}
           type={"category"}
           title={state.categoriesLabel}
           items={state.categories}
+          onSelectItem={controller.onSelectItem}
         />
 
         <SidebarFilter
+          iconRightClassName={state.iconRightClassNameAuthor}
+          onToggleDropdown={() => controller.onToggleDropdown("author")}
+          isFilterIdApplied={controller.isFilterIdApplied}
           type={"author"}
           title={state.authorsLabel}
           items={state.authors}
+          onSelectItem={controller.onSelectItem}
         />
 
         <div className="apply-filters">
@@ -40,18 +48,40 @@ const Filters = (): JSX.Element => {
 
       </aside>
       <div className="filters--mobile">
-        <DropdownFilter
+        <div className="filters--mobile-buttons">
+          <DropdownFilter 
+            iconRightClassName={state.iconRightClassNameCategory}
+            isFilterIdApplied={controller.isFilterIdApplied}
+            type={"category"}
+            title={state.categoriesLabel}
+            items={state.categories}
+            onSelectItem={controller.onSelectItem}
+            onToggleDropdown={() => controller.onToggleDropdown("category")}
+          />
+          <DropdownFilter
+            iconRightClassName={state.iconRightClassNameAuthor}
+            isFilterIdApplied={controller.isFilterIdApplied}
             type={"author"}
             title={state.authorsLabel}
             items={state.authors}
-        />
-
-        <DropdownFilter 
-          type={"category"}
-          title={state.categoriesLabel}
-          items={state.categories}
-        />
-          
+            onSelectItem={controller.onSelectItem}
+            onToggleDropdown={() => controller.onToggleDropdown("author")}
+          />
+        </div>
+        <div className="filters--mobile-group">
+          <ul>
+            {state.dropdownOpen && state.items?.map(item => {
+              return (
+                  <li key={`${state.dropdownOpen}--${item.id}`}>
+                    <button 
+                      className={controller.isFilterIdApplied(item.id, state.dropdownOpen!) ? "filter-applied" : undefined} 
+                      onClick={() => controller.onSelectItem(item.id, state.dropdownOpen!)}>{item.name}
+                    </button>
+                  </li>
+                )
+              })}
+          </ul>
+        </div>
       </div>
     </div>
   );

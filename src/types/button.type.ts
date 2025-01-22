@@ -7,7 +7,7 @@ export type ButtonSize = "small" | "medium" | "large"
 export type ButtonTypes = "primary" | "secondary" | "tertiary"
 
 export interface ButtonProps {
-    onClick: () => void
+    onClick: (val: any) => void
     label: string
     type?: ButtonTypes
     size?: ButtonSize
@@ -27,6 +27,6 @@ export interface UseButtonReturn extends UseProps {
         iconRightClassName: string | undefined
     }
     controller: UseProps["controller"] & {
-        onClick: () => void
+        onClick: (val: any) => void
     }
 }
