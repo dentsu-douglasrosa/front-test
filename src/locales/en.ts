@@ -9,6 +9,8 @@ const translation: {[key: string]: string } = {
     applyFilters: "Apply filters",
     dwsBlog: "DWS Blog",
     sortBy: "Sort by: ",
+    newest: "Newest first",
+    oldest: "Oldest first",
 }
 
 export default translation

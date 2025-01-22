@@ -28,7 +28,16 @@ const Main: React.FC = () => {
     <div>
       {!state.isOnPostDetails && <div className="sub-header">
         <span className="main-label">{state.mainLabel}</span>
-        <span className="main-sort-by">{state.sortByLabel}</span>
+        <div className="main-sort">
+          <span className="main-sort-by-label">{state.sortByLabel}</span>
+          <span
+            onClick={controller.onClickSorting}
+            className="main-sort-by-type"
+          >
+            {state.sortByType}
+            <i className="fas fa-arrow-right-arrow-left"></i>
+          </span>
+        </div>
       </div>}
       <main>
         <aside className="main-sidebar">

@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { type SortTypes } from 'src/types/filters.type';
 
 interface FilterState {
     categoryIds: string[];
     authorIds: string[];
     searchQuery: string;
+    sortType: SortTypes;
 }
 
 const initialState: FilterState = {
     categoryIds: [],
     authorIds: [],
     searchQuery: '',
+    sortType: "newest",
 };
 
 const filterSlice = createSlice({
@@ -25,6 +28,9 @@ const filterSlice = createSlice({
         setSearchQuery: (state, action: PayloadAction<string>) => {
             state.searchQuery = action.payload;
         },
+        setSortType: (state, action: PayloadAction<SortTypes>) => {
+            state.sortType = action.payload;
+        },
         resetFilters: (state) => {
             state.categoryIds = [];
             state.authorIds = [];
@@ -37,6 +43,7 @@ export const {
     setCategoryIds,
     setAuthorIds,
     setSearchQuery,
+    setSortType,
     resetFilters,
 } = filterSlice.actions;
 

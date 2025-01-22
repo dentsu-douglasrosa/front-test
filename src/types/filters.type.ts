@@ -8,6 +8,7 @@ export interface AuthorFilter extends Author {}
 export interface CategoryFilter extends Category {}
 
 export type FilterTypes = "category" | "author"
+export type SortTypes = "newest" | "oldest"
 
 export type FilterChangeCallback = (type: FilterTypes, value: string) => void;
 

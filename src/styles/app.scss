@@ -67,3 +67,23 @@ main {
 .main-label {
   @include fonts.font-h2;
 }
+
+.main-sort {
+  @include fonts.font-body-small;
+  
+  .main-sort-by-label {
+    font-weight: 600;
+  }
+
+  .main-sort-by-type {
+    cursor: pointer;
+    margin-left: units.rem(6);
+    i {
+      color: colors.$accent1-light;
+      margin-left: units.rem(6);
+      display: inline-block;
+      transform: rotate(90deg);
+    }
+  }
+}
+

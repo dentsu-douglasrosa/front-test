@@ -1,4 +1,5 @@
 import { UseProps } from "./_shared.type"
+import { SortTypes } from "./filters.type"
 
 export interface MainProps {
 }
@@ -12,6 +13,6 @@ export interface UseMainReturn extends UseProps {
         sortByLabel: string
     }
     controller: UseProps["controller"] & {
-        
+        onClickSorting: () => void
     }
 }
