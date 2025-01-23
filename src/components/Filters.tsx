@@ -68,18 +68,18 @@ const Filters = (): JSX.Element => {
             onToggleDropdown={() => controller.onToggleDropdown("author")}
           />
         </div>
-        <div className="filters--mobile-group">
+        <div className={state.classNamesForDropdownItems}>
           <ul>
             {state.dropdownOpen && state.items?.map(item => {
               return (
-                  <li key={`${state.dropdownOpen}--${item.id}`}>
-                    <button 
-                      className={controller.isFilterIdApplied(item.id, state.dropdownOpen!) ? "filter-applied" : undefined} 
-                      onClick={() => controller.onSelectItem(item.id, state.dropdownOpen!)}>{item.name}
-                    </button>
-                  </li>
-                )
-              })}
+                <li key={`${state.dropdownOpen}--${item.id}`}>
+                  <button 
+                    className={controller.isFilterIdApplied(item.id, state.dropdownOpen!) ? "filter-applied" : undefined} 
+                    onClick={() => controller.onSelectItem(item.id, state.dropdownOpen!)}>{item.name}
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>

@@ -2,6 +2,7 @@
 @use './colors';
 @use './units';
 @use './breakpoints';
+@use './shadows';
 
 @mixin filters-group {
   margin-top: units.rem(20);
@@ -87,6 +88,7 @@
 
   &--mobile {
     display: none;
+
     @media (max-width: breakpoints.$breakpoint-md) {
       display: flex;
       flex-direction: column;
@@ -98,9 +100,50 @@
       }
       
       &-group {
-        display: flex;
-        flex-direction: column;
-        @include filters-group;
+        // display: none;
+        &--visible {
+          background-color: colors.hex-to-rgba(colors.$neutrals-lightest, 0.1);
+          display: flex;
+          flex-direction: column;
+          border-radius: units.rem(8);
+          margin-top: units.rem(12);
+          padding: units.rem(6);
+  
+          .filter-applied {
+            color: colors.$accent1-dark;
+          }
+  
+          ul {
+            list-style: none;
+            padding: 0;
+            padding-top: units.rem(3);
+            padding-bottom: units.rem(3);
+  
+            li {
+              padding-top: units.rem(8);
+              padding-bottom: units.rem(8);
+  
+              button {
+                width: 100%;
+                text-align: left;
+                background: none;
+                border: none;
+                font-size: units.rem(14);
+                color: colors.$neutrals-extra-dark;
+                font-weight: 100;
+                cursor: pointer;
+                padding-left: units.rem(8);
+  
+                &:hover {
+                  color: colors.$accent1-dark;
+                }
+                
+              }
+            }
+          }
+  
+          @include shadows.drop-shadow(0px, 0px, 20px);
+        }
       }
     }
   }

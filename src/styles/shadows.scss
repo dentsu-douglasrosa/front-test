@@ -1,0 +1,6 @@
+@use './colors.scss';
+
+@mixin drop-shadow($x: 0px, $y: 0px, $blur: 10px, $color: colors.hex-to-rgba(colors.$neutrals-extra-dark, 0.25)) {
+    box-shadow: $x $y $blur $color;
+  }
+  

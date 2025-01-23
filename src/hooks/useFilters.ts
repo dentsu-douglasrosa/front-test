@@ -8,6 +8,7 @@ import { UI } from "src/constants/ui";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "src/types/redux.type";
 import { resetFilters, setAuthorIds, setCategoryIds } from "src/redux/slices/filter.slice";
+import classNames from "classnames";
 
 export const useFilters = (): UseFiltersReturn => {
     const [shouldShowItems, setShouldShowItems] = useState<Record<FilterTypes, boolean>>({ 
@@ -138,6 +139,9 @@ export const useFilters = (): UseFiltersReturn => {
             iconRightClassNameCategory: shouldShowItems['category'] ? "fas fa-angle-up" : "fas fa-angle-down",
             items,
             dropdownOpen,
+            classNamesForDropdownItems: classNames("filters--mobile-group", {
+                "filters--mobile-group--visible": shouldShowItems['author'] || shouldShowItems['category']
+            }),
         },
         controller: {
             onSelectItem,
