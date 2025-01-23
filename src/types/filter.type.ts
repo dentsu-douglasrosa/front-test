@@ -11,7 +11,7 @@ export interface FilterProps {
   items: Filter[]
   onSelectItem: (id: string, type: FilterTypes) => void
   isFilterIdApplied: (id: string, type: FilterTypes) => boolean
-  onRemoveItems?: () => void
+  onRemoveItems?: (type: FilterTypes) => void
   iconRightClassName: string
 }
 
@@ -26,6 +26,6 @@ export interface UseFilterReturn extends UseProps {
         onSelectItem: (id: string, type: FilterTypes) => void
         isFilterIdApplied: (id: string, type: FilterTypes) => boolean
         onToggleDropdown: (type: FilterTypes) => void
-        onRemoveItems: (() => void) | undefined
+        onRemoveItems: ((type: FilterTypes) => void) | undefined
     }
 }

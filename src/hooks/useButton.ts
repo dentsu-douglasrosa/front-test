@@ -39,6 +39,7 @@ export const useButton = (props: UseButtonProps): UseButtonReturn => {
         },
         controller: {
             onClick: props.onClick,
+            onRightIconClick: props.onRightIconClick,
         }
     }
 }

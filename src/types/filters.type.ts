@@ -48,6 +48,6 @@ export interface UseFiltersReturn extends UseProps {
         isFilterIdApplied: (id: string, type: FilterTypes) => boolean
         onToggleDropdown: (type: FilterTypes) => void
         onClickSorting: () => void
-        onRemoveItems: () => void
+        onRemoveItems: (type: FilterTypes) => void
     }
 }

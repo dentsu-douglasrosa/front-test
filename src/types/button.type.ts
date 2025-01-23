@@ -30,5 +30,6 @@ export interface UseButtonReturn extends UseProps {
     }
     controller: UseProps["controller"] & {
         onClick: (val: any) => void
+        onRightIconClick: ((val: any) => void) | undefined
     }
 }

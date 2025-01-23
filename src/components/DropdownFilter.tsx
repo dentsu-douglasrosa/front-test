@@ -16,7 +16,7 @@ const DropdownFilter = (props : DropdownFilterProps): JSX.Element => {
         iconRightClassName={state.iconRightClassName} 
         label={state.title} 
         onClick={controller.onToggleDropdown}
-        onRightIconClick={controller.onRemoveItems}
+        onRightIconClick={controller.onRemoveItems ?? controller.onToggleDropdown}
         backgroundColor={COLORS['$neutrals-lightest']}
         hoverBackgroundColor={COLORS['$secondary-medium-5percent']}
       />

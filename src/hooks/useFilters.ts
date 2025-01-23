@@ -128,8 +128,14 @@ export const useFilters = (): UseFiltersReturn => {
         }
     }
 
-    const onRemoveItems = () => {
-        
+    const onRemoveItems = (type: FilterTypes) => {
+        if(type === "author") {
+            setAuthorNamesSelected(undefined)
+            dispatch(setAuthorIds([]));
+        } else {
+            setCategoryNamesSelected(undefined)
+            dispatch(setCategoryIds([]));
+        }
     }
 
     useEffect(() => {
@@ -145,6 +151,14 @@ export const useFilters = (): UseFiltersReturn => {
         init();
     }, []);
 
+    const iconRightClassNameAuthor = authorNamesSelected 
+        ? "fa-solid fa-xmark"
+        : (shouldShowItems['author'] ? "fas fa-angle-up" : "fas fa-angle-down")
+
+    const iconRightClassNameCategory = categoryNamesSelected 
+        ? "fa-solid fa-xmark"
+        : (shouldShowItems['category'] ? "fas fa-angle-up" : "fas fa-angle-down")
+
     return {
         state: {
             categoriesLabel: t('category'),
@@ -157,8 +171,8 @@ export const useFilters = (): UseFiltersReturn => {
             isOnPostDetails,
             applyFiltersWidth: '100%',
             shouldShowItems,
-            iconRightClassNameAuthor: shouldShowItems['author'] ? "fas fa-angle-up" : "fas fa-angle-down",
-            iconRightClassNameCategory: shouldShowItems['category'] ? "fas fa-angle-up" : "fas fa-angle-down",
+            iconRightClassNameAuthor,
+            iconRightClassNameCategory,
             items,
             dropdownOpen,
             classNamesForDropdownItems: classNames("filters--mobile-group", {
