@@ -124,15 +124,15 @@ export const useFilters = (): UseFiltersReturn => {
 
     return {
         state: {
-            categoriesLabel: t('categories'),
-            authorsLabel: t('authors'),
+            categoriesLabel: t('category'),
+            authorsLabel: t('author'),
             filtersLabel: t('filtersLabel'),
             applyFiltersLabel: t('applyFilters'),
             authors,
             categories,
             loading,
             isOnPostDetails,
-            applyFiltersWidth: rem(UI.SIDEBAR.WIDTH),
+            applyFiltersWidth: '100%',
             shouldShowItems,
             iconRightClassNameAuthor: shouldShowItems['author'] ? "fas fa-angle-up" : "fas fa-angle-down",
             iconRightClassNameCategory: shouldShowItems['category'] ? "fas fa-angle-up" : "fas fa-angle-down",

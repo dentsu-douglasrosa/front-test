@@ -8,7 +8,7 @@ const SidebarFilter = (props: SidebarFilterProps): JSX.Element => {
 
   return (
     <div className="filters--group">
-      <h3>{state.title}</h3>
+      <h3 className="title">{state.title}</h3>
       <ul>
         {state.items?.map(item => {
           return (

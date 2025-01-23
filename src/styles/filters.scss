@@ -6,38 +6,41 @@
 @mixin filters-group {
   margin-top: units.rem(20);
 
+  .title {
+    @include fonts.font-body-large;
+    font-weight: 600;
+    margin-bottom: units.rem(10);
+  }
+
   .filter-applied {
     background-color: colors.hex-to-rgba(colors.$accent1-light, 0.05);
     color: colors.$accent1-dark;
     border: units.rem(1) solid colors.$accent1-dark;
     border-radius: units.rem(6);
-  }
-
-  h3 {
-    @include fonts.font-body-large;
-    margin-bottom: units.rem(10);
+    margin-top: units.rem(12);
+    margin-bottom: units.rem(12);
   }
 
   ul {
     list-style: none;
     padding: 0;
+    margin-bottom: units.rem(32);
 
     li {
       border-bottom: units.rem(1) solid colors.$neutrals-lightest;
       
       button {
-        margin-top: units.rem(12);
-        margin-bottom: units.rem(12);
         width: 100%;
         text-align: left;
         background: none;
         border: none;
         padding-top: units.rem(12);
         padding-bottom: units.rem(12);
-        font-size: units.rem(14);
-        color: colors.$neutrals-dark;
+        font-size: units.rem(16);
+        color: colors.$neutrals-extra-dark;
+        font-weight: 100;
         cursor: pointer;
-        padding-left: units.rem(16);
+        padding-left: units.rem(8);
 
         &:hover {
           color: colors.$accent1-dark;
@@ -60,11 +63,13 @@
       border: units.rem(1) solid colors.$neutrals-lightest;
       padding: units.rem(20);
       border-radius: units.rem(16);
+
       .filters-title {
         @include fonts.font-h1;
         display: flex;
         align-items: center;
         font-size: units.rem(18);
+        margin-bottom: units.rem(16);
   
         &-icon {
           margin-right: units.rem(12);
@@ -73,7 +78,7 @@
   
       .apply-filters {
         align-self: center;
-        margin-top: units.rem(20);
+        width: 100%;
       }
   
       @include filters-group;

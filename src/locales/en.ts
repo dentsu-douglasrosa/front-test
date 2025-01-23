@@ -1,6 +1,6 @@
 const translation: {[key: string]: string } = {
-    categories: "Categories",
-    authors: "Authors",
+    category: "Category",
+    author: "Author",
     filtersLabel: "Filters",
     inputPlaceholder: 'Search',
     latestArticles: "Latest Articles",
