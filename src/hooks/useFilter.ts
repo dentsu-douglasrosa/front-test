@@ -22,6 +22,7 @@ export const useFilter = (props: UseFilterProps): UseFilterReturn => {
             onSelectItem: props.onSelectItem,
             isFilterIdApplied: props.isFilterIdApplied,
             onToggleDropdown: props.onToggleDropdown,
+            onRemoveItems: props.onRemoveItems
         }
     }
 }

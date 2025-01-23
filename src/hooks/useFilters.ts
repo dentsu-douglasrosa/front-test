@@ -24,6 +24,8 @@ export const useFilters = (): UseFiltersReturn => {
 
     const isOnPostDetails = !!id
 
+    const [authorNamesSelected, setAuthorNamesSelected] = useState<string|undefined>();
+    const [categoryNamesSelected, setCategoryNamesSelected] = useState<string|undefined>();
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -56,15 +58,27 @@ export const useFilters = (): UseFiltersReturn => {
     }
     
     const onSelectItem = (id: string, type: FilterTypes) => {
-        if(categoryIds.includes(id) || authorIds.includes(id)) {
-            dispatch(resetFilters())
-            return
-        }
+        let filterIds: string[] = []
 
-        dispatch(resetFilters())
-        
-        if(type === "author") dispatch(setAuthorIds([id]));
-        else dispatch(setCategoryIds([id]));
+        if(type === "author") filterIds = [...authorIds]
+        else filterIds = [...categoryIds]
+
+        if(filterIds.includes(id)) filterIds = filterIds.filter(f => f !== id)
+        else filterIds.push(id)
+
+        if(type === "author") {
+            const filtersSelected = authors.filter(item => filterIds.includes(item.id))
+            const filterNamesString = filtersSelected.map(filter => filter.name).join(", ")
+            setAuthorNamesSelected(filterNamesString.length ? filterNamesString : undefined)
+
+            dispatch(setAuthorIds(filterIds));
+        } else {
+            const filtersSelected = categories.filter(item => filterIds.includes(item.id))
+            const filterNamesString = filtersSelected.map(filter => filter.name).join(", ")
+            setCategoryNamesSelected(filterNamesString.length ? filterNamesString : undefined)
+
+            dispatch(setCategoryIds(filterIds));
+        }
     };
 
     const fetchCategories = async () => {
@@ -114,6 +128,10 @@ export const useFilters = (): UseFiltersReturn => {
         }
     }
 
+    const onRemoveItems = () => {
+        
+    }
+
     useEffect(() => {
         const init = async () => {
             setLoading(true)
@@ -146,8 +164,9 @@ export const useFilters = (): UseFiltersReturn => {
             classNamesForDropdownItems: classNames("filters--mobile-group", {
                 "filters--mobile-group--visible": shouldShowItems['author'] || shouldShowItems['category']
             }),
-            sortByType: sortType === "newest" ? t('newest') : t('oldest')
-            
+            sortByType: sortType === "newest" ? t('newest') : t('oldest'),
+            authorNamesSelected,
+            categoryNamesSelected,
         },
         controller: {
             onSelectItem,
@@ -155,6 +174,7 @@ export const useFilters = (): UseFiltersReturn => {
             isFilterIdApplied,
             onToggleDropdown,
             onClickSorting,
+            onRemoveItems,
         }
     }
 }

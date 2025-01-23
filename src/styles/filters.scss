@@ -92,6 +92,12 @@
       flex-direction: column;
       align-items: center;
 
+      &-filters-selected {
+        background-color: red;
+        border-radius: units.rem(5);
+        padding: units.rem(5);
+      }
+
       &-buttons {
         display: flex;
         flex-direction: row;

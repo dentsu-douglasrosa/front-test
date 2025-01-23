@@ -8,6 +8,7 @@ export type ButtonTypes = "primary" | "secondary" | "tertiary"
 
 export interface ButtonProps {
     onClick: (val: any) => void
+    onRightIconClick?: (val: any) => void
     label: string
     type?: ButtonTypes
     size?: ButtonSize

@@ -39,6 +39,8 @@ export interface UseFiltersReturn extends UseProps {
         items: Filter[]
         dropdownOpen: FilterTypes | undefined
         sortByType: string
+        authorNamesSelected: string | undefined
+        categoryNamesSelected: string | undefined
     }
     controller: UseProps["controller"] & {
         onApplyFilters: () => void
@@ -46,5 +48,6 @@ export interface UseFiltersReturn extends UseProps {
         isFilterIdApplied: (id: string, type: FilterTypes) => boolean
         onToggleDropdown: (type: FilterTypes) => void
         onClickSorting: () => void
+        onRemoveItems: () => void
     }
 }

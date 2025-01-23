@@ -53,19 +53,21 @@ const Filters = (): JSX.Element => {
             iconRightClassName={state.iconRightClassNameCategory}
             isFilterIdApplied={controller.isFilterIdApplied}
             type={"category"}
-            title={state.categoriesLabel}
+            title={state.categoryNamesSelected ?? state.categoriesLabel}
             items={state.categories}
             onSelectItem={controller.onSelectItem}
             onToggleDropdown={() => controller.onToggleDropdown("category")}
+            onRemoveItems={controller.onRemoveItems}
           />
           <DropdownFilter
             iconRightClassName={state.iconRightClassNameAuthor}
             isFilterIdApplied={controller.isFilterIdApplied}
             type={"author"}
-            title={state.authorsLabel}
+            title={state.authorNamesSelected ?? state.authorsLabel}
             items={state.authors}
             onSelectItem={controller.onSelectItem}
             onToggleDropdown={() => controller.onToggleDropdown("author")}
+            onRemoveItems={controller.onRemoveItems}
           />
 
           <div className="main-sort">

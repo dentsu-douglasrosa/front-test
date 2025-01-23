@@ -15,7 +15,7 @@ const Button = (props: ButtonProps): JSX.Element => {
         >
           {state.iconLeftClassName && <i className={state.iconLeftClassName}></i>}
           {state.label && <span>{state.label}</span>}
-          {state.iconRightClassName && <i className={state.iconRightClassName}></i>}
+          {state.iconRightClassName && <i onClick={controller.onRightIconClick} className={state.iconRightClassName}></i>}
         </button>
       </div>
   );
