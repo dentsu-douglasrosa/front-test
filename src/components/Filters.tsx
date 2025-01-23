@@ -38,7 +38,7 @@ const Filters = (): JSX.Element => {
 
         <div className="apply-filters">
           <Button
-            size='small'
+            size='medium'
             type='primary'
             width={state.applyFiltersWidth}
             onClick={controller.onApplyFilters}
