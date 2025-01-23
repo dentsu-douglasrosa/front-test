@@ -3,6 +3,7 @@
 @use './units';
 @use './breakpoints';
 @use './shadows';
+@use './sizes';
 
 @mixin filters-group {
   margin-top: units.rem(20);
@@ -92,16 +93,19 @@
     @media (max-width: breakpoints.$breakpoint-md) {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       &-buttons {
         display: flex;
         flex-direction: row;
         gap: units.rem(8);
+        display: flex;
+        justify-content: center;
       }
       
       &-group {
-        // display: none;
         &--visible {
+          width: sizes.$sidebar-width;
           background-color: colors.hex-to-rgba(colors.$neutrals-lightest, 0.1);
           display: flex;
           flex-direction: column;
