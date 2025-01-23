@@ -26,18 +26,18 @@ html, body {
 
 main {
   // background: radial-gradient(circle at 90% 10%, colors.$secondary-extra-light, #ffffff, #ffffff, #ffffff);
-  padding: units.rem(32);
+  
+  @media (max-width: breakpoints.$breakpoint-md) {
+    padding-top: units.rem(32);
+  }
   
   @media (min-width: breakpoints.$breakpoint-md) {
+    padding-left: units.rem(32);
+    padding-right: units.rem(32);
     display: flex;
     flex-direction: row;
   }
 
-  @media (max-width: breakpoints.$breakpoint-md) {
-    margin-top: units.rem(18);
-  }
-
-  
   .main-sidebar {
     @media (min-width: breakpoints.$breakpoint-md) {
       width: sizes.$sidebar-width;
@@ -55,32 +55,40 @@ main {
 
 .sub-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
   padding-left: units.rem(32);
   padding-right: units.rem(32);
   padding-top: units.rem(32);
-  justify-content: space-between;
-}
+  padding-bottom: units.rem(32);
 
-.main-label {
-  @include fonts.font-h2;
-}
-
-.main-sort {
-  @include fonts.font-body-small;
-  
-  .main-sort-by-label {
-    font-weight: 600;
+  @media (max-width: breakpoints.$breakpoint-md) {
+    display: none;
   }
-
-  .main-sort-by-type {
-    cursor: pointer;
-    margin-left: units.rem(6);
-    i {
-      color: colors.$accent1-light;
+  
+  .main-label {
+    @include fonts.font-h2;
+  }
+  
+  .main-sort {
+    @include fonts.font-body-small;
+    
+    .main-sort-by-label {
+      font-weight: 600;
+    }
+  
+    .main-sort-by-type {
+      cursor: pointer;
       margin-left: units.rem(6);
-      display: inline-block;
-      transform: rotate(90deg);
+      i {
+        color: colors.$accent1-light;
+        margin-left: units.rem(6);
+        display: inline-block;
+        transform: rotate(90deg);
+      }
     }
   }
 }
+
 

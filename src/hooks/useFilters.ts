@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { ENDPOINTS } from "src/constants/filters";
-import { AuthorFilter, CategoryFilter, Filter, FilterTypes, UseFiltersReturn } from "src/types/filters.type";
+import { AuthorFilter, CategoryFilter, Filter, FilterTypes, SortTypes, UseFiltersReturn } from "src/types/filters.type";
 import { useTranslation } from 'react-i18next';
 import { useParams, useLocation } from "react-router-dom";
 import { rem } from "src/utils/units";
-import { UI } from "src/constants/ui";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "src/types/redux.type";
-import { resetFilters, setAuthorIds, setCategoryIds } from "src/redux/slices/filter.slice";
+import { resetFilters, setAuthorIds, setCategoryIds, setSortType } from "src/redux/slices/filter.slice";
 import classNames from "classnames";
 
 export const useFilters = (): UseFiltersReturn => {
@@ -15,7 +14,7 @@ export const useFilters = (): UseFiltersReturn => {
         category: false,
         author: false,
     });
-    const { categoryIds, authorIds } = useSelector((state: RootState) => state.filter);
+    const { categoryIds, authorIds, sortType} = useSelector((state: RootState) => state.filter);
     const dispatch = useDispatch();
     const { t } = useTranslation();
     // const { id } = useParams<{ id: string }>();
@@ -28,6 +27,11 @@ export const useFilters = (): UseFiltersReturn => {
     const [authors, setAuthors] = useState<AuthorFilter[]>([]);
     const [categories, setCategories] = useState<CategoryFilter[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+
+    const onClickSorting = () => {
+        const value: SortTypes = sortType === "newest" ? "oldest" : "newest"
+        dispatch(setSortType(value))
+    }
     
     const dropdownOpen: FilterTypes | undefined = useMemo(() => {
         if(shouldShowItems['author']) return "author"
@@ -142,12 +146,15 @@ export const useFilters = (): UseFiltersReturn => {
             classNamesForDropdownItems: classNames("filters--mobile-group", {
                 "filters--mobile-group--visible": shouldShowItems['author'] || shouldShowItems['category']
             }),
+            sortByType: sortType === "newest" ? t('newest') : t('oldest')
+            
         },
         controller: {
             onSelectItem,
             onApplyFilters,
             isFilterIdApplied,
             onToggleDropdown,
+            onClickSorting,
         }
     }
 }

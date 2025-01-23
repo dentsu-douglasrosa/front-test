@@ -1,6 +1,7 @@
 @use './spacing';
 @use './units';
 @use './colors';
+@use './breakpoints';
 
 .header-container {
   height: units.rem(80);
@@ -22,7 +23,12 @@
     .logo-img {
       width: auto;
       height: units.rem(25);
-      margin-right: 0.5rem;
+
+      @media (max-width: breakpoints.$breakpoint-md) {
+        width: auto;
+        height: units.rem(20);
+      }
+
       &:hover {
         cursor: pointer;
       }

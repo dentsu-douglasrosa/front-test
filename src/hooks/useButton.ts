@@ -25,6 +25,7 @@ export const useButton = (props: UseButtonProps): UseButtonReturn => {
                 "button--tertiary": type === "tertiary",
             }),
             styles: { 
+                '--var-hover-background-color': props.hoverBackgroundColor,
                 '--var-background-color': props.backgroundColor,
                 '--var-color': props.color,
                 '--var-width': props.width,

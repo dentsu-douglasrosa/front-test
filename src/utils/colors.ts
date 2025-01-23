@@ -1,13 +1,4 @@
-const BASE_FONT_SIZE = 16;
-
-export const rem = (valueInPx: number) => {
-    if(valueInPx === 1) return `${valueInPx}px`;
-
-    return `${valueInPx/BASE_FONT_SIZE}rem`
-}
-
-
-function hexToRgba(hex: string, alpha: number = 1): string {
+export const hexToRgba = (hex: string, alpha: number = 1): string => {
     const sanitizedHex = hex.replace(/^#/, "");
   
     const fullHex =

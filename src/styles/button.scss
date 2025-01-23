@@ -47,7 +47,7 @@
       background-color: var(--var-background-color, colors.$secondary-medium);
       &:hover {
         border: units.rem(1) solid colors.$secondary-dark;
-        background-color: var(--var-background-color, colors.$secondary-dark);
+        background-color: var(--var-hover-background-color, colors.$secondary-dark);
       }
     }
 
@@ -55,8 +55,7 @@
       border: units.rem(1) solid var(--var-color, colors.$secondary-light);
       background-color: var(--var-background-color, transparent);
       &:hover {
-        // border: units.rem(1) solid var(--var-color, colors.$secondary-dark);
-        background-color: var(--var-background-color, colors.$secondary-lightest);
+        background-color: var(--var-hover-background-color, colors.$secondary-lightest);
       }
     }
 
@@ -65,7 +64,7 @@
       background-color: var(--var-background-color, colors.$secondary-lightest);
       &:hover {
         border: units.rem(1) solid var(--var-color, colors.$secondary-medium);
-        background-color: var(--var-background-color, colors.$secondary-extra-light);
+        background-color: var(--var-hover-background-color, colors.$secondary-extra-light);
       }
     }
 

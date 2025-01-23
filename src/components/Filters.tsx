@@ -67,6 +67,16 @@ const Filters = (): JSX.Element => {
             onSelectItem={controller.onSelectItem}
             onToggleDropdown={() => controller.onToggleDropdown("author")}
           />
+
+          <div className="main-sort">
+            <span
+              onClick={controller.onClickSorting}
+              className="main-sort-by-type"
+            >
+              {state.sortByType}
+              <i className="fas fa-arrow-right-arrow-left"></i>
+            </span>
+          </div>
         </div>
         <div className={state.classNamesForDropdownItems}>
           <ul>

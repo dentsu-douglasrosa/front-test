@@ -16,6 +16,7 @@ export interface ButtonProps {
     backgroundColor?: string
     color?: string
     width?: number | string
+    hoverBackgroundColor?: string
 }
 
 export interface UseButtonReturn extends UseProps {

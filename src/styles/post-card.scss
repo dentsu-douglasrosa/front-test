@@ -13,7 +13,8 @@
   height: units.rem(425);
   background: colors.$neutrals-lightest;
 
-  margin:  units.rem(sizes.$postcard-gap-value-in-px); 
+  margin-right:  units.rem(sizes.$postcard-gap-value-in-px); 
+  margin-bottom:  units.rem(sizes.$postcard-gap-value-in-px); 
 
   &:hover {
     background: colors.$neutrals-extra-light;

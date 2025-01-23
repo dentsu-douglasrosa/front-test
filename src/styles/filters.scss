@@ -6,8 +6,6 @@
 @use './sizes';
 
 @mixin filters-group {
-  margin-top: units.rem(20);
-
   .title {
     @include fonts.font-body-large;
     font-weight: 600;
@@ -58,7 +56,6 @@
     display: none;
     @media (min-width: breakpoints.$breakpoint-md) {
       flex-direction: column;
-      margin-top: units.rem(15);
       display: flex;
       flex-direction: column;
       background: white;
@@ -101,16 +98,38 @@
         gap: units.rem(8);
         display: flex;
         justify-content: center;
+        align-items: center;
+        margin-bottom: units.rem(16);
+      }
+
+      .main-sort {
+        display: flex;
+        @include fonts.font-body-small;
+        
+        .main-sort-by-label {
+          font-weight: 600;
+        }
+      
+        .main-sort-by-type {
+          cursor: pointer;
+          margin-left: units.rem(6);
+          i {
+            color: colors.$accent1-light;
+            margin-left: units.rem(6);
+            display: inline-block;
+            transform: rotate(90deg);
+          }
+        }
       }
       
       &-group {
         &--visible {
+          margin-bottom: units.rem(16);
           width: sizes.$sidebar-width;
           background-color: colors.hex-to-rgba(colors.$neutrals-lightest, 0.1);
           display: flex;
           flex-direction: column;
           border-radius: units.rem(8);
-          margin-top: units.rem(12);
           padding: units.rem(6);
   
           .filter-applied {

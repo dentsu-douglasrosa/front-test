@@ -38,11 +38,13 @@ export interface UseFiltersReturn extends UseProps {
         shouldShowItems: Record<FilterTypes, boolean>
         items: Filter[]
         dropdownOpen: FilterTypes | undefined
+        sortByType: string
     }
     controller: UseProps["controller"] & {
         onApplyFilters: () => void
         onSelectItem: (id: string, type: FilterTypes) => void
         isFilterIdApplied: (id: string, type: FilterTypes) => boolean
         onToggleDropdown: (type: FilterTypes) => void
+        onClickSorting: () => void
     }
 }
