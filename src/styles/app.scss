@@ -28,12 +28,11 @@ main {
   // background: radial-gradient(circle at 90% 10%, colors.$secondary-extra-light, #ffffff, #ffffff, #ffffff);
   
   @media (max-width: breakpoints.$breakpoint-md) {
-    padding-top: units.rem(32);
+    padding: units.rem(26);
   }
   
   @media (min-width: breakpoints.$breakpoint-md) {
-    padding-left: units.rem(32);
-    padding-right: units.rem(32);
+    padding: units.rem(32);
     display: flex;
     flex-direction: row;
   }
