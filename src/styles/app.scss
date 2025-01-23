@@ -26,29 +26,26 @@ html, body {
 
 main {
   // background: radial-gradient(circle at 90% 10%, colors.$secondary-extra-light, #ffffff, #ffffff, #ffffff);
-  display: flex;
-  flex: 1;
-  justify-content: center;
   padding: units.rem(32);
-  flex-direction: row;
+  
+  @media (min-width: breakpoints.$breakpoint-md) {
+    display: flex;
+    flex-direction: row;
+  }
 
   @media (max-width: breakpoints.$breakpoint-md) {
-    padding: units.rem(16);
-    flex-direction: column;
-    align-items: center;
+    margin-top: units.rem(18);
+  }
+
+  
+  .main-sidebar {
+    @media (min-width: breakpoints.$breakpoint-md) {
+      width: sizes.$sidebar-width;
+    }
   }
 
   .main-content {
     flex: 1;
-    padding: units.rem(16);
-    
-    @media (max-width: breakpoints.$breakpoint-md) {
-      padding-top: units.rem(16);
-    }
-  }
-
-  .main-sidebar {
-    width: sizes.$sidebar-width;
   }
 
   .main-sidebar-right {

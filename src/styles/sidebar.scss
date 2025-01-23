@@ -4,8 +4,4 @@
 @use './breakpoints';
 
 .sidebar {
-  @media (max-width: breakpoints.$breakpoint-md) {
-    margin-top: units.rem(18);
-    align-self: center;
-  }
 }

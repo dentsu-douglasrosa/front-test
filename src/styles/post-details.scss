@@ -4,15 +4,15 @@
 @use './breakpoints';
 
 .posts-details-container {
-  margin-top: units.rem(65);
-  // width: 80%;
-  padding: units.rem(20);
+  width: 100%;
+  @media (min-width: breakpoints.$breakpoint-md) {
+    margin-top: units.rem(65);
+  }
 
   .post-thumbnail-container {
     .post-thumbnail {
       width: 100%;
       border-radius: units.rem(15);
-      
     }
   }
 
