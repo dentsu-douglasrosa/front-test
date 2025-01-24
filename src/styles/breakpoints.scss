@@ -1,19 +1,19 @@
 @use './units';
 
-// Extra Small Devices (e.g., small phones)
+// small phone
 $breakpoint-xs: units.rem(320);
 
-// Small Devices (e.g., phones)
+// regular phone
 $breakpoint-sm: units.rem(576);
 
-// Medium Devices (e.g., tablets)
+// tablet
 $breakpoint-md: units.rem(768);
 
-// Large Devices (e.g., desktops)
+// regular desktop
 $breakpoint-lg: units.rem(992);
 
-// Extra Large Devices (e.g., large desktops)
+// large desktop
 $breakpoint-xl: units.rem(1200);
 
-// Ultra Large Devices (e.g., 4K screens)
+// 4K desktop
 $breakpoint-xxl: units.rem(1400);
