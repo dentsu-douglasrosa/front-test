@@ -6,7 +6,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { rem } from "src/utils/units";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "src/types/redux.type";
-import { resetFilters, setAuthorIds, setCategoryIds, setSortType } from "src/redux/slices/filter.slice";
+import { resetFilters, setAuthorIds, setCategoryIds, setFilterIdsApplied, setSortType } from "src/redux/slices/filter.slice";
 import classNames from "classnames";
 
 export const useFilters = (): UseFiltersReturn => {
@@ -15,8 +15,10 @@ export const useFilters = (): UseFiltersReturn => {
         author: false,
     });
     const { categoryIds, authorIds, sortType} = useSelector((state: RootState) => state.filter);
+    const { isMobile } = useSelector((state: RootState) => state.breakpoints);
     const dispatch = useDispatch();
     const { t } = useTranslation();
+
     // const { id } = useParams<{ id: string }>();
     const location = useLocation();
     const match = location.pathname.match(/\/posts\/([^/]+)/);
@@ -76,9 +78,12 @@ export const useFilters = (): UseFiltersReturn => {
             const filtersSelected = categories.filter(item => filterIds.includes(item.id))
             const filterNamesString = filtersSelected.map(filter => filter.name).join(", ")
             setCategoryNamesSelected(filterNamesString.length ? filterNamesString : undefined)
-
+            
             dispatch(setCategoryIds(filterIds));
         }
+
+        if(isMobile) dispatch(setFilterIdsApplied(filterIds));
+        else dispatch(setFilterIdsApplied([]));
     };
 
     const fetchCategories = async () => {
@@ -111,7 +116,7 @@ export const useFilters = (): UseFiltersReturn => {
     }
 
     const onApplyFilters = () => {
-        // TODO
+        dispatch(setFilterIdsApplied([...categoryIds, ...authorIds]));
     }
 
     const onToggleDropdown = (type: FilterTypes) => {
@@ -150,6 +155,10 @@ export const useFilters = (): UseFiltersReturn => {
 
         init();
     }, []);
+
+    useEffect(() => {
+        if(isMobile) dispatch(setFilterIdsApplied([...categoryIds, ...authorIds]));
+    }, [isMobile])
 
     const iconRightClassNameAuthor = authorNamesSelected 
         ? "fa-solid fa-xmark"

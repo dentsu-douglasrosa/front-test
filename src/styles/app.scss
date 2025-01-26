@@ -22,6 +22,10 @@ body {
 html, body {
   width: 100%;
   height: 100%;
+
+  @media (max-width: breakpoints.$breakpoint-md) {
+    --current-breakpoint: '$breakpoint-md';
+  }
 }
 
 main {

@@ -6,6 +6,7 @@ interface FilterState {
     authorIds: string[];
     searchQuery: string;
     sortType: SortTypes;
+    filterIdsApplied: string[];
 }
 
 const initialState: FilterState = {
@@ -13,12 +14,16 @@ const initialState: FilterState = {
     authorIds: [],
     searchQuery: '',
     sortType: "newest",
+    filterIdsApplied: [],
 };
 
 const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
+        setFilterIdsApplied: (state, action: PayloadAction<string[]>) => {
+            state.filterIdsApplied = action.payload;
+        },
         setCategoryIds: (state, action: PayloadAction<string[]>) => {
             state.categoryIds = action.payload;
         },
@@ -40,6 +45,7 @@ const filterSlice = createSlice({
 });
 
 export const {
+    setFilterIdsApplied,
     setCategoryIds,
     setAuthorIds,
     setSearchQuery,

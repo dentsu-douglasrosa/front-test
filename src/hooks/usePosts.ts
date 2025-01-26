@@ -17,17 +17,25 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
         categoryIds,
         searchQuery,
         sortType,
+        filterIdsApplied,
     } = useSelector((state: RootState) => state.filter);
 
     const [loading, setLoading] = useState<boolean>(true);
     const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
+   
     const shouldUseFilteredPosts: boolean = useMemo(() => {
-        return !!categoryIds.length
-            || !!authorIds.length
-            || !!searchQuery.length
-    }, [categoryIds, authorIds, searchQuery])
-    
+        return !!filterIdsApplied.length
+            && 
+            (
+                !!categoryIds.length
+                || !!authorIds.length
+                || !!searchQuery.length
+            )
+    }, [categoryIds, authorIds, searchQuery, filterIdsApplied])
+    console.log({
+        shouldUseFilteredPosts,
+    })
     const sortPosts = (postsParam: Post[], type: SortTypes): Post[] => {
         const postsCopy = [...postsParam];
 
@@ -114,9 +122,10 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
     }, [sortType]);
 
     useEffect(() => {
-        filterPosts(posts)
-    }, [categoryIds, authorIds, searchQuery]);
-    
+        console.log('filterIdsApplied.length', filterIdsApplied.length)
+        if(filterIdsApplied.length) filterPosts(posts)
+    }, [filterIdsApplied]);
+
     return {
         state: {
             posts: shouldUseFilteredPosts ? filteredPosts : posts,

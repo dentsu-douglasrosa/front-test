@@ -5,6 +5,9 @@ import { useTranslation } from "react-i18next";
 import { RootState } from "src/types/redux.type";
 import { SortTypes } from "src/types/filters.type";
 import { setSortType } from "src/redux/slices/filter.slice";
+import { useEffect } from "react";
+import { BREAKPOINTS } from "src/constants/breakpoints";
+import { setIsMobile } from "src/redux/slices/breakpoints.slice";
 
 export const useMain = (_?: UseMainProps): UseMainReturn => {
     const { t } = useTranslation();
@@ -23,6 +26,18 @@ export const useMain = (_?: UseMainProps): UseMainReturn => {
         const value: SortTypes = sortType === "newest" ? "oldest" : "newest"
         dispatch(setSortType(value))
     }
+
+    const onChangeMedia = (mediaEvent: MediaQueryListEvent| MediaQueryList) => {
+        dispatch(setIsMobile(mediaEvent.matches));
+    }
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINTS["$breakpoint-md"]})`);
+
+        onChangeMedia(mediaQuery)
+
+        mediaQuery.addEventListener("change", onChangeMedia);
+    }, [])
 
     return {
         state: {
