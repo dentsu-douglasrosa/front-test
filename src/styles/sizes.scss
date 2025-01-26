@@ -1,5 +1,6 @@
 @use './units';
 
+$header-height: units.rem(80);
 $sidebar-width: units.rem(300);
 
 $postcard-width-value-in-px: 314;

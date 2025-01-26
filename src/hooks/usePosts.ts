@@ -25,17 +25,14 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
 
    
     const shouldUseFilteredPosts: boolean = useMemo(() => {
-        return !!filterIdsApplied.length
-            && 
-            (
+        return !!searchQuery 
+            || !!filterIdsApplied.length && (
                 !!categoryIds.length
                 || !!authorIds.length
                 || !!searchQuery.length
             )
+
     }, [categoryIds, authorIds, searchQuery, filterIdsApplied])
-    console.log({
-        shouldUseFilteredPosts,
-    })
     const sortPosts = (postsParam: Post[], type: SortTypes): Post[] => {
         const postsCopy = [...postsParam];
 
@@ -50,7 +47,14 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
         });
     };
 
-    const filterPosts = (posts: Post[]) => {
+    interface FilterPostsProps {
+        currentPosts?: Post[]
+        currentSearchQuery?: string
+    } 
+
+    const filterPosts = (filterPostsProps?: FilterPostsProps) => {
+        const { currentPosts = posts, currentSearchQuery = searchQuery } = filterPostsProps ?? {}
+        
         if(!categoryIds.length 
             && !authorIds.length
             && !searchQuery.length
@@ -60,7 +64,7 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
 
         let filteredPosts: Post[] = []
 
-        posts.forEach(post => {
+        currentPosts.forEach(post => {
             if(!!categoryIds.length && !!post.categories.length){
                 const postHasCategories = post.categories.map(postCat => postCat.id).every(postCatId => categoryIds.includes(postCatId))
                 if(postHasCategories) filteredPosts.push(post)
@@ -71,11 +75,11 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
                 if(postHasAuthor) filteredPosts.push(post)
             }
 
-            if(!!searchQuery.length){
+            if(!!currentSearchQuery.length){
                 filteredPosts = posts.filter(
                     post => post.title
                         .toLocaleLowerCase()
-                        .includes(searchQuery.toLocaleLowerCase())
+                        .includes(currentSearchQuery.toLocaleLowerCase())
                 )
             }
         })
@@ -122,9 +126,12 @@ export const usePosts = (props: UsePostsProps): UsePostsReturn => {
     }, [sortType]);
 
     useEffect(() => {
-        console.log('filterIdsApplied.length', filterIdsApplied.length)
-        if(filterIdsApplied.length) filterPosts(posts)
-    }, [filterIdsApplied]);
+        if(filterIdsApplied.length || !!searchQuery)
+            filterPosts({ 
+                currentSearchQuery: searchQuery
+            })
+            
+    }, [filterIdsApplied, searchQuery]);
 
     return {
         state: {
