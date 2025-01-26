@@ -11,7 +11,7 @@ const Button = (props: ButtonProps): JSX.Element => {
         <button 
           className={state.buttonClassNames} 
           style={state.styles} 
-          onClick={undefined}
+          onClick={controller.onClick}
         >
           {state.iconLeftClassName && <i className={state.iconLeftClassName}></i>}
           {state.label && <span onClick={controller.onClick} >{state.label}</span>}

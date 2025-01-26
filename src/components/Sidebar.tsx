@@ -9,13 +9,15 @@ const Sidebar = (): JSX.Element => {
 
   return (
     <div className="sidebar">
-      {state.isOnPostDetails && <Button 
-        size='small'
-        type='secondary'
-        iconLeftClassName='fas fa-arrow-left'
-        onClick={controller.onClickBack}
-        label={state.labelBack}
-      />}
+      {state.isOnPostDetails && <div className="sidebar--back-button">
+        <Button 
+          size='small'
+          type='secondary'
+          iconLeftClassName='fas fa-arrow-left'
+          onClick={controller.onClickBack}
+          label={state.labelBack}
+        />
+      </div>}
       {!state.isOnPostDetails && <Filters />}
     </div>
   );

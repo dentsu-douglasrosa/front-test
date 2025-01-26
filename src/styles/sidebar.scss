@@ -2,6 +2,12 @@
 @use './colors';
 @use './units';
 @use './breakpoints';
+@use './sizes';
 
 .sidebar {
+    &--back-button {
+        @media (min-width: breakpoints.$breakpoint-md) {
+            margin-top: sizes.$header-height;
+        }
+    }
 }

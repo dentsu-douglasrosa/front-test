@@ -2,11 +2,14 @@
 @use './fonts';
 @use './units';
 @use './breakpoints';
+@use './sizes';
 
 .posts-details-container {
   width: 100%;
+  
   @media (min-width: breakpoints.$breakpoint-md) {
-  }
+    margin-top: sizes.$header-height;
+}
 
   @media (max-width: breakpoints.$breakpoint-md) {
     margin-top: units.rem(12);

@@ -8,6 +8,7 @@ $minwidth-postcard:
 
 .posts-container {
   margin-left: units.rem(sizes.$postcard-gap-value-in-px); 
+
   .posts-grid {
     display: flex;
     justify-content: center;
