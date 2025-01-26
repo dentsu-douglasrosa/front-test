@@ -2,21 +2,18 @@ import "./styles/app.scss";
 import React from "react";
 import Header from "./components/Header";
 import Posts from "./pages/Posts";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import PostDetails from "./pages/PostDetails";
-import store from './redux/store';
-import { Provider } from 'react-redux';
 import Sidebar from "./components/Sidebar";
 import { useMain } from "./hooks/useMain";
+import Providers from "./providers";
 
 const App: React.FC = () => {
   return (
-    <Provider store={store}>
-      <Router>
-        <Header />
-        <Main />
-      </Router>
-    </Provider>
+    <Providers>
+      <Header />
+      <Main />
+    </Providers>
   );
 };
 
